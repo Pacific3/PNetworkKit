@@ -8,10 +8,10 @@
 
 import SystemConfiguration
 
-struct ReachabilityCondition: OperationCondition {
+public struct ReachabilityCondition: OperationCondition {
     static let hostKey = "Host"
-    static let name = "Reachability"
-    static let isMutuallyExclusive = false
+    public static let name = "Reachability"
+    public static let isMutuallyExclusive = false
     
     let host: NSURL
     
@@ -19,11 +19,11 @@ struct ReachabilityCondition: OperationCondition {
         self.host = host
     }
     
-    func dependencyForOperation(operation: Operation) -> NSOperation? {
+    public func dependencyForOperation(operation: Operation) -> NSOperation? {
         return nil
     }
     
-    func evaluateForOperation(operation: Operation, completion: OperationCompletionResult -> Void) {
+    public func evaluateForOperation(operation: Operation, completion: OperationCompletionResult -> Void) {
         ReachabilityController.requestReachability(host) { reachable in
             if reachable {
                 completion(.Satisfied)

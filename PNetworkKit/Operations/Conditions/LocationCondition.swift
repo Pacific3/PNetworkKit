@@ -1,29 +1,28 @@
 
 import CoreLocation
 
-struct LocationCondition: OperationCondition {
-    
-    enum Usage {
+public struct LocationCondition: OperationCondition {
+    public enum Usage {
         case WhenInUse
         case Always
     }
     
-    static let name = "Location"
     static let locationServicesEnabledKey = "CLLocationServicesEnabled"
-    static let authorizationStatusKey = "CLAuthorizationSTatus"
-    static let isMutuallyExclusive = false
+    static let authorizationStatusKey     = "CLAuthorizationSTatus"
+    public static let name                = "Location"
+    public static let isMutuallyExclusive = false
     
     let usage: Usage
     
-    init(usage: Usage) {
+    public init(usage: Usage) {
         self.usage = usage
     }
     
-    func dependencyForOperation(operation: Operation) -> NSOperation? {
+    public func dependencyForOperation(operation: Operation) -> NSOperation? {
         return LocationPermissionOperation(usage: usage)
     }
     
-    func evaluateForOperation(operation: Operation, completion: OperationCompletionResult -> Void) {
+    public func evaluateForOperation(operation: Operation, completion: OperationCompletionResult -> Void) {
         let enabled = CLLocationManager.locationServicesEnabled()
         let actual = CLLocationManager.authorizationStatus()
         
