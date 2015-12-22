@@ -6,7 +6,10 @@
 //  Copyright © 2015 Pacific3. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <PFoundation/PFoundation.h>
+#import <PUIKit/PUIKit.h>
+#import <Realm/Realm.h>
+#import <RealmSwift/RealmSwift-Swift.h>
 
 //! Project version number for PNetworkKit.
 FOUNDATION_EXPORT double PNetworkKitVersionNumber;
