@@ -1,0 +1,2 @@
+git "git@bitbucket.org:pacific3/pfoundation.git" "v1.0"
+git "git@bitbucket.org:pacific3/puikit.git" "v1.1"
