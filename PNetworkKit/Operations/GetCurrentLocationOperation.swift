@@ -7,7 +7,7 @@ public class GetCurrentLocationOperation: Operation, CLLocationManagerDelegate {
     private var manager: CLLocationManager?
     private let handler: CLLocation -> Void
     
-    init(accuracy: CLLocationAccuracy, locationHandler: CLLocation -> Void) {
+    public init(accuracy: CLLocationAccuracy, locationHandler: CLLocation -> Void) {
         self.accuracy = accuracy
         self.handler = locationHandler
         

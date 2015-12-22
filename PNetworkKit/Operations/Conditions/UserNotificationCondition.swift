@@ -3,7 +3,7 @@
 import UIKit
 
 public struct UserNotificationCondition: OperationCondition {
-    enum Behavior {
+    public enum Behavior {
         case Merge
         case Replace
     }
@@ -17,7 +17,7 @@ public struct UserNotificationCondition: OperationCondition {
     let application: UIApplication
     let behavior: Behavior
     
-    init(settings: UIUserNotificationSettings, application: UIApplication, behavior: Behavior = .Merge) {
+    public init(settings: UIUserNotificationSettings, application: UIApplication, behavior: Behavior = .Merge) {
         self.settings = settings
         self.application = application
         self.behavior = behavior
