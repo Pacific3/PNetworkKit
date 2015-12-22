@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF49F8F31C29F88300D3605D /* GetCurrentLocationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F21C29F88300D3605D /* GetCurrentLocationOperation.swift */; };
+		DF49F8F51C29F9D600D3605D /* UserNotificationCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F41C29F9D600D3605D /* UserNotificationCondition.swift */; };
+		DF49F8F81C29FB4500D3605D /* UIUserNotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F71C29FB4500D3605D /* UIUserNotificationSettings.swift */; };
+		DF49F8FA1C2A013600D3605D /* RemoteNotificationCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F91C2A013600D3605D /* RemoteNotificationCondition.swift */; };
 		DFA41C131C28CB4900483D23 /* PNetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA41C121C28CB4900483D23 /* PNetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA41C1A1C28CB4A00483D23 /* PNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA41C0F1C28CB4900483D23 /* PNetworkKit.framework */; };
 		DFA41C1F1C28CB4A00483D23 /* PNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C1E1C28CB4A00483D23 /* PNetworkKitTests.swift */; };
@@ -36,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF49F8F21C29F88300D3605D /* GetCurrentLocationOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCurrentLocationOperation.swift; sourceTree = "<group>"; };
+		DF49F8F41C29F9D600D3605D /* UserNotificationCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationCondition.swift; sourceTree = "<group>"; };
+		DF49F8F71C29FB4500D3605D /* UIUserNotificationSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUserNotificationSettings.swift; sourceTree = "<group>"; };
+		DF49F8F91C2A013600D3605D /* RemoteNotificationCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteNotificationCondition.swift; sourceTree = "<group>"; };
 		DFA41C0F1C28CB4900483D23 /* PNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA41C121C28CB4900483D23 /* PNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PNetworkKit.h; sourceTree = "<group>"; };
 		DFA41C141C28CB4900483D23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF49F8F61C29FB2E00D3605D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DF49F8F71C29FB4500D3605D /* UIUserNotificationSettings.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DFA41C051C28CB4900483D23 = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				DFA41C121C28CB4900483D23 /* PNetworkKit.h */,
+				DF49F8F61C29FB2E00D3605D /* Extensions */,
 				DFA41C3A1C28CF9A00483D23 /* Protocols */,
 				DFA41C311C28CE4700483D23 /* Operations */,
 				DFA41C2C1C28CE1500483D23 /* Frameworks */,
@@ -136,6 +153,7 @@
 				DFA41C411C28D3B800483D23 /* Generics */,
 				DFA41C341C28CEB100483D23 /* Conditions */,
 				DFA41C321C28CE8500483D23 /* URLSessionTaskOperation.swift */,
+				DF49F8F21C29F88300D3605D /* GetCurrentLocationOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -145,6 +163,8 @@
 			children = (
 				DFA41C351C28CF2B00483D23 /* ReachabilityCondition.swift */,
 				DFA41C381C28CF6A00483D23 /* LocationCondition.swift */,
+				DF49F8F41C29F9D600D3605D /* UserNotificationCondition.swift */,
+				DF49F8F91C2A013600D3605D /* RemoteNotificationCondition.swift */,
 			);
 			path = Conditions;
 			sourceTree = "<group>";
@@ -278,14 +298,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFA41C431C28D3CC00483D23 /* GetJSONModelOperation.swift in Sources */,
+				DF49F8FA1C2A013600D3605D /* RemoteNotificationCondition.swift in Sources */,
 				DFA41C3C1C28CFB500483D23 /* JSONParselable.swift in Sources */,
 				DFA41C361C28CF2B00483D23 /* ReachabilityCondition.swift in Sources */,
+				DF49F8F31C29F88300D3605D /* GetCurrentLocationOperation.swift in Sources */,
 				DFA41C471C28D4B200483D23 /* ParseJSONOperation.swift in Sources */,
 				DFA41C3E1C28CFDB00483D23 /* Pollable.swift in Sources */,
 				DFA41C331C28CE8500483D23 /* URLSessionTaskOperation.swift in Sources */,
 				DFA41C401C28D2A300483D23 /* Endpoint.swift in Sources */,
+				DF49F8F81C29FB4500D3605D /* UIUserNotificationSettings.swift in Sources */,
 				DFA41C451C28D44200483D23 /* DownloadJSONModelOperation.swift in Sources */,
 				DFA41C391C28CF6A00483D23 /* LocationCondition.swift in Sources */,
+				DF49F8F51C29F9D600D3605D /* UserNotificationCondition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
