@@ -1,0 +1,10 @@
+framework module PFoundation {
+  umbrella header "PFoundation.h"
+
+  export *
+  module * { export * }
+}
+
+module PFoundation.Swift {
+    header "PFoundation-Swift.h"
+}

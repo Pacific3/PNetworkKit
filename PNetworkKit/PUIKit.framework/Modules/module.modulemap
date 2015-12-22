@@ -1,0 +1,10 @@
+framework module PUIKit {
+  umbrella header "PUIKit.h"
+
+  export *
+  module * { export * }
+}
+
+module PUIKit.Swift {
+    header "PUIKit-Swift.h"
+}

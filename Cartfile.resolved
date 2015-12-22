@@ -1,2 +1,3 @@
 git "git@bitbucket.org:pacific3/pfoundation.git" "v1.0"
+github "realm/realm-cocoa" "v0.97.0"
 git "git@bitbucket.org:pacific3/puikit.git" "v1.1"
