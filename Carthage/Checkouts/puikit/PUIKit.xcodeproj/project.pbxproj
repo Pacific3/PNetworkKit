@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF0CAA371C2F582100397E78 /* PFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA361C2F582100397E78 /* PFoundation.framework */; };
 		DF58A9541C28B8FF00526515 /* PUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DF58A9531C28B8FF00526515 /* PUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF58A95B1C28B8FF00526515 /* PUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF58A9501C28B8FF00526515 /* PUIKit.framework */; };
 		DF58A9601C28B8FF00526515 /* PUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58A95F1C28B8FF00526515 /* PUIKitTests.swift */; };
@@ -14,7 +15,6 @@
 		DFA41BFC1C28BBA000483D23 /* NetworkActivityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41BFB1C28BBA000483D23 /* NetworkActivityObserver.swift */; };
 		DFA41BFF1C28BBDB00483D23 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41BFE1C28BBDB00483D23 /* UIColor.swift */; };
 		DFA41C011C28BD3E00483D23 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C001C28BD3E00483D23 /* UIImage.swift */; };
-		DFA41C041C28C9C500483D23 /* PFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA41C031C28C9C500483D23 /* PFoundation.framework */; };
 		DFD414651C2B6830002016AC /* HexColorConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD414641C2B6830002016AC /* HexColorConvertible.swift */; };
 		DFD414671C2B68C4002016AC /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD414661C2B68C4002016AC /* UIApplication.swift */; };
 		DFE1C8D41C2F2BB7009935B1 /* ColorConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE1C8D31C2F2BB7009935B1 /* ColorConvertible.swift */; };
@@ -31,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF0CAA361C2F582100397E78 /* PFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PFoundation.framework; path = Carthage/Build/iOS/PFoundation.framework; sourceTree = "<group>"; };
 		DF58A9501C28B8FF00526515 /* PUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF58A9531C28B8FF00526515 /* PUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUIKit.h; sourceTree = "<group>"; };
 		DF58A9551C28B8FF00526515 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,7 +42,6 @@
 		DFA41BFB1C28BBA000483D23 /* NetworkActivityObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkActivityObserver.swift; sourceTree = "<group>"; };
 		DFA41BFE1C28BBDB00483D23 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		DFA41C001C28BD3E00483D23 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		DFA41C031C28C9C500483D23 /* PFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PFoundation.framework; sourceTree = "<group>"; };
 		DFD414641C2B6830002016AC /* HexColorConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColorConvertible.swift; sourceTree = "<group>"; };
 		DFD414661C2B68C4002016AC /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		DFE1C8D31C2F2BB7009935B1 /* ColorConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConvertible.swift; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFA41C041C28C9C500483D23 /* PFoundation.framework in Frameworks */,
+				DF0CAA371C2F582100397E78 /* PFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +70,7 @@
 		DF58A9461C28B8FF00526515 = {
 			isa = PBXGroup;
 			children = (
+				DF0CAA361C2F582100397E78 /* PFoundation.framework */,
 				DF58A9521C28B8FF00526515 /* PUIKit */,
 				DF58A95E1C28B8FF00526515 /* PUIKitTests */,
 				DF58A9511C28B8FF00526515 /* Products */,
@@ -93,7 +94,6 @@
 				DFA41BFD1C28BBCB00483D23 /* Extensions */,
 				DFD414631C2B681E002016AC /* Protocols */,
 				DF58A96A1C28B91A00526515 /* Operations */,
-				DFA41C021C28C9B300483D23 /* Frameworks */,
 			);
 			path = PUIKit;
 			sourceTree = "<group>";
@@ -132,14 +132,6 @@
 				DFA41C001C28BD3E00483D23 /* UIImage.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		DFA41C021C28C9B300483D23 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DFA41C031C28C9C500483D23 /* PFoundation.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DFD414631C2B681E002016AC /* Protocols */ = {
@@ -388,6 +380,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PUIKit",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = PUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -411,6 +404,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PUIKit",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = PUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
