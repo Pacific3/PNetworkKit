@@ -1,2 +1,3 @@
-git "git@bitbucket.org:pacific3/puikit.git" == 1.4
+git "git@bitbucket.org:pacific3/puikit.git"
+git "git@bitbucket.org:pacific3/pfoundation.git"
 github "realm/realm-cocoa" == 0.97
