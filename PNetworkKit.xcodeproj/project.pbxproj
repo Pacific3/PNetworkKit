@@ -16,8 +16,6 @@
 		DFA41C131C28CB4900483D23 /* PNetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA41C121C28CB4900483D23 /* PNetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA41C1A1C28CB4A00483D23 /* PNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA41C0F1C28CB4900483D23 /* PNetworkKit.framework */; };
 		DFA41C1F1C28CB4A00483D23 /* PNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C1E1C28CB4A00483D23 /* PNetworkKitTests.swift */; };
-		DFA41C2F1C28CE1E00483D23 /* PFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA41C2D1C28CE1E00483D23 /* PFoundation.framework */; };
-		DFA41C301C28CE1E00483D23 /* PUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA41C2E1C28CE1E00483D23 /* PUIKit.framework */; };
 		DFA41C331C28CE8500483D23 /* URLSessionTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C321C28CE8500483D23 /* URLSessionTaskOperation.swift */; };
 		DFA41C361C28CF2B00483D23 /* ReachabilityCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C351C28CF2B00483D23 /* ReachabilityCondition.swift */; };
 		DFA41C391C28CF6A00483D23 /* LocationCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C381C28CF6A00483D23 /* LocationCondition.swift */; };
@@ -27,8 +25,6 @@
 		DFA41C431C28D3CC00483D23 /* GetJSONModelOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */; };
 		DFA41C451C28D44200483D23 /* DownloadJSONModelOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C441C28D44200483D23 /* DownloadJSONModelOperation.swift */; };
 		DFA41C471C28D4B200483D23 /* ParseJSONOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C461C28D4B200483D23 /* ParseJSONOperation.swift */; };
-		DFA41C4A1C28D65600483D23 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA41C481C28D65600483D23 /* Realm.framework */; };
-		DFA41C4B1C28D65600483D23 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA41C491C28D65600483D23 /* RealmSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +50,6 @@
 		DFA41C191C28CB4A00483D23 /* PNetworkKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PNetworkKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA41C1E1C28CB4A00483D23 /* PNetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNetworkKitTests.swift; sourceTree = "<group>"; };
 		DFA41C201C28CB4A00483D23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DFA41C2D1C28CE1E00483D23 /* PFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PFoundation.framework; sourceTree = "<group>"; };
-		DFA41C2E1C28CE1E00483D23 /* PUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PUIKit.framework; sourceTree = "<group>"; };
 		DFA41C321C28CE8500483D23 /* URLSessionTaskOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionTaskOperation.swift; sourceTree = "<group>"; };
 		DFA41C351C28CF2B00483D23 /* ReachabilityCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityCondition.swift; sourceTree = "<group>"; };
 		DFA41C381C28CF6A00483D23 /* LocationCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCondition.swift; sourceTree = "<group>"; };
@@ -65,8 +59,6 @@
 		DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetJSONModelOperation.swift; sourceTree = "<group>"; };
 		DFA41C441C28D44200483D23 /* DownloadJSONModelOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadJSONModelOperation.swift; sourceTree = "<group>"; };
 		DFA41C461C28D4B200483D23 /* ParseJSONOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseJSONOperation.swift; sourceTree = "<group>"; };
-		DFA41C481C28D65600483D23 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
-		DFA41C491C28D65600483D23 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,10 +66,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFA41C4A1C28D65600483D23 /* Realm.framework in Frameworks */,
-				DFA41C301C28CE1E00483D23 /* PUIKit.framework in Frameworks */,
-				DFA41C4B1C28D65600483D23 /* RealmSwift.framework in Frameworks */,
-				DFA41C2F1C28CE1E00483D23 /* PFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +113,6 @@
 				DF49F8F61C29FB2E00D3605D /* Extensions */,
 				DFA41C3A1C28CF9A00483D23 /* Protocols */,
 				DFA41C311C28CE4700483D23 /* Operations */,
-				DFA41C2C1C28CE1500483D23 /* Frameworks */,
 				DFA41C141C28CB4900483D23 /* Info.plist */,
 			);
 			path = PNetworkKit;
@@ -138,17 +125,6 @@
 				DFA41C201C28CB4A00483D23 /* Info.plist */,
 			);
 			path = PNetworkKitTests;
-			sourceTree = "<group>";
-		};
-		DFA41C2C1C28CE1500483D23 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				DFA41C481C28D65600483D23 /* Realm.framework */,
-				DFA41C491C28D65600483D23 /* RealmSwift.framework */,
-				DFA41C2D1C28CE1E00483D23 /* PFoundation.framework */,
-				DFA41C2E1C28CE1E00483D23 /* PUIKit.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DFA41C311C28CE4700483D23 /* Operations */ = {
