@@ -10,6 +10,7 @@
 #import <PUIKit/PUIKit.h>
 #import <Realm/Realm.h>
 #import <RealmSwift/RealmSwift-Swift.h>
+#import <CoreLocation/CoreLocation.h>
 
 //! Project version number for PNetworkKit.
 FOUNDATION_EXPORT double PNetworkKitVersionNumber;
