@@ -16,4 +16,14 @@ extension UIApplication {
                 NSForegroundColorAttributeName: secondary
             ]
     }
+    
+    public func p_setPrimaryColor<C: ColorConvertible>(
+        primary: C,
+        secondaryColor secondary: C,
+        terciaryColor terciary: C) {
+            p_setPrimaryColor(primary.color(),
+                secondaryColor: secondary.color(),
+                terciaryColor: terciary.color()
+            )
+    }
 }

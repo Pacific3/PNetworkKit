@@ -17,6 +17,7 @@
 		DFA41C041C28C9C500483D23 /* PFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA41C031C28C9C500483D23 /* PFoundation.framework */; };
 		DFD414651C2B6830002016AC /* HexColorConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD414641C2B6830002016AC /* HexColorConvertible.swift */; };
 		DFD414671C2B68C4002016AC /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD414661C2B68C4002016AC /* UIApplication.swift */; };
+		DFE1C8D41C2F2BB7009935B1 /* ColorConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE1C8D31C2F2BB7009935B1 /* ColorConvertible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		DFA41C031C28C9C500483D23 /* PFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PFoundation.framework; sourceTree = "<group>"; };
 		DFD414641C2B6830002016AC /* HexColorConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColorConvertible.swift; sourceTree = "<group>"; };
 		DFD414661C2B68C4002016AC /* UIApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		DFE1C8D31C2F2BB7009935B1 /* ColorConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConvertible.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				DFD414641C2B6830002016AC /* HexColorConvertible.swift */,
+				DFE1C8D31C2F2BB7009935B1 /* ColorConvertible.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				DFA41C011C28BD3E00483D23 /* UIImage.swift in Sources */,
 				DFA41BFF1C28BBDB00483D23 /* UIColor.swift in Sources */,
 				DFA41BFC1C28BBA000483D23 /* NetworkActivityObserver.swift in Sources */,
+				DFE1C8D41C2F2BB7009935B1 /* ColorConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

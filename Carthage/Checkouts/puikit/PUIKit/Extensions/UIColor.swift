@@ -2,7 +2,7 @@
 public typealias Color = UIColor
 
 extension Color {
-    public class func p_fromHexColorConvertible(hexColorConvertible: HexColorConvertible) -> Color {
+    public class func p_fromHexColorConvertible<C: HexColorConvertible>(hexColorConvertible: C) -> Color {
         return Color(p_hex: hexColorConvertible.hexColor())
     }
     
