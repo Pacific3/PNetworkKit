@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF0CAA3C1C2F59A900397E78 /* PUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA381C2F59A900397E78 /* PUIKit.framework */; };
+		DF0CAA3D1C2F59A900397E78 /* PFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA391C2F59A900397E78 /* PFoundation.framework */; };
+		DF0CAA3E1C2F59A900397E78 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA3A1C2F59A900397E78 /* RealmSwift.framework */; };
+		DF0CAA3F1C2F59A900397E78 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA3B1C2F59A900397E78 /* Realm.framework */; };
 		DF2A54C01C2B6BA80064F889 /* GeocodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A54BE1C2B6BA80064F889 /* GeocodeOperation.swift */; };
 		DF2A54C11C2B6BA80064F889 /* ReverseGeocodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A54BF1C2B6BA80064F889 /* ReverseGeocodeOperation.swift */; };
 		DF49F8F31C29F88300D3605D /* GetCurrentLocationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F21C29F88300D3605D /* GetCurrentLocationOperation.swift */; };
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF0CAA381C2F59A900397E78 /* PUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PUIKit.framework; path = Carthage/Build/iOS/PUIKit.framework; sourceTree = "<group>"; };
+		DF0CAA391C2F59A900397E78 /* PFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PFoundation.framework; path = Carthage/Build/iOS/PFoundation.framework; sourceTree = "<group>"; };
+		DF0CAA3A1C2F59A900397E78 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		DF0CAA3B1C2F59A900397E78 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		DF2A54BE1C2B6BA80064F889 /* GeocodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodeOperation.swift; sourceTree = "<group>"; };
 		DF2A54BF1C2B6BA80064F889 /* ReverseGeocodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeOperation.swift; sourceTree = "<group>"; };
 		DF49F8F21C29F88300D3605D /* GetCurrentLocationOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCurrentLocationOperation.swift; sourceTree = "<group>"; };
@@ -66,6 +74,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF0CAA3C1C2F59A900397E78 /* PUIKit.framework in Frameworks */,
+				DF0CAA3D1C2F59A900397E78 /* PFoundation.framework in Frameworks */,
+				DF0CAA3E1C2F59A900397E78 /* RealmSwift.framework in Frameworks */,
+				DF0CAA3F1C2F59A900397E78 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF0CAA401C2F59B900397E78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DF0CAA381C2F59A900397E78 /* PUIKit.framework */,
+				DF0CAA391C2F59A900397E78 /* PFoundation.framework */,
+				DF0CAA3A1C2F59A900397E78 /* RealmSwift.framework */,
+				DF0CAA3B1C2F59A900397E78 /* Realm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DF49F8F61C29FB2E00D3605D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +116,7 @@
 			children = (
 				DFA41C111C28CB4900483D23 /* PNetworkKit */,
 				DFA41C1D1C28CB4A00483D23 /* PNetworkKitTests */,
+				DF0CAA401C2F59B900397E78 /* Frameworks */,
 				DFA41C101C28CB4900483D23 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -416,6 +440,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PNetworkKit",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = PNetworkKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -439,6 +464,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PNetworkKit",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = PNetworkKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
