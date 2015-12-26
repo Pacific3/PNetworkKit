@@ -104,9 +104,15 @@ SWIFT_CLASS("_TtC6PUIKit18ShowAlertOperation")
 - (void)execute;
 @end
 
+@class UIColor;
+
+@interface UIApplication (SWIFT_EXTENSION(PUIKit))
+- (void)p_setPrimaryColor:(UIColor * __nonnull)primary secondaryColor:(UIColor * __nonnull)secondary terciaryColor:(UIColor * __nonnull)terciary;
+@end
+
 
 @interface UIColor (SWIFT_EXTENSION(PUIKit))
-- (nonnull instancetype)initWithHex:(NSString * __nonnull)hex;
+- (nonnull instancetype)initWithP_hex:(NSString * __nonnull)hex;
 @end
 
 

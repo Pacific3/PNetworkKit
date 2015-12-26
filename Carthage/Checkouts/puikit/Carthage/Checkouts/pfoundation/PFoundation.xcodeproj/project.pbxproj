@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DF58A8FD1C28B2E400526515 /* PFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = DF58A8FC1C28B2E400526515 /* PFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF58A9041C28B2E400526515 /* PFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF58A8F91C28B2E400526515 /* PFoundation.framework */; };
-		DF58A9091C28B2E400526515 /* PFoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58A9081C28B2E400526515 /* PFoundationTests.swift */; };
 		DF58A9141C28B2FB00526515 /* PFoundation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58A9131C28B2FB00526515 /* PFoundation.swift */; };
 		DF58A91A1C28B31300526515 /* Currys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58A9161C28B31300526515 /* Currys.swift */; };
 		DF58A91B1C28B31300526515 /* DataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58A9171C28B31300526515 /* DataValidator.swift */; };
@@ -33,6 +32,8 @@
 		DF58A9401C28B66500526515 /* MutuallyExclusive.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58A93F1C28B66500526515 /* MutuallyExclusive.swift */; };
 		DF58A9431C28B69C00526515 /* BlockObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58A9421C28B69C00526515 /* BlockObserver.swift */; };
 		DF58A9451C28B6BD00526515 /* OperationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF58A9441C28B6BD00526515 /* OperationObserver.swift */; };
+		DFE1C8D61C2F491C009935B1 /* DataValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE1C8D51C2F491C009935B1 /* DataValidatorTests.swift */; };
+		DFE1C8D81C2F52AE009935B1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE1C8D71C2F52AE009935B1 /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +51,6 @@
 		DF58A8FC1C28B2E400526515 /* PFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PFoundation.h; sourceTree = "<group>"; };
 		DF58A8FE1C28B2E400526515 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF58A9031C28B2E400526515 /* PFoundationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PFoundationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF58A9081C28B2E400526515 /* PFoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PFoundationTests.swift; sourceTree = "<group>"; };
 		DF58A90A1C28B2E400526515 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF58A9131C28B2FB00526515 /* PFoundation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFoundation.swift; sourceTree = "<group>"; };
 		DF58A9161C28B31300526515 /* Currys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currys.swift; sourceTree = "<group>"; };
@@ -75,6 +75,8 @@
 		DF58A93F1C28B66500526515 /* MutuallyExclusive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MutuallyExclusive.swift; sourceTree = "<group>"; };
 		DF58A9421C28B69C00526515 /* BlockObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockObserver.swift; sourceTree = "<group>"; };
 		DF58A9441C28B6BD00526515 /* OperationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationObserver.swift; sourceTree = "<group>"; };
+		DFE1C8D51C2F491C009935B1 /* DataValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataValidatorTests.swift; sourceTree = "<group>"; };
+		DFE1C8D71C2F52AE009935B1 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +134,8 @@
 		DF58A9071C28B2E400526515 /* PFoundationTests */ = {
 			isa = PBXGroup;
 			children = (
-				DF58A9081C28B2E400526515 /* PFoundationTests.swift */,
 				DF58A90A1C28B2E400526515 /* Info.plist */,
+				DFE1C8D51C2F491C009935B1 /* DataValidatorTests.swift */,
 			);
 			path = PFoundationTests;
 			sourceTree = "<group>";
@@ -158,6 +160,7 @@
 				DF58A9221C28B34200526515 /* NSLock.swift */,
 				DF58A9231C28B34200526515 /* NSOperation.swift */,
 				DF58A9241C28B34200526515 /* NSURL.swift */,
+				DFE1C8D71C2F52AE009935B1 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				DF58A9311C28B4D400526515 /* Operation.swift in Sources */,
 				DF58A9291C28B34200526515 /* NSOperation.swift in Sources */,
 				DF58A9141C28B2FB00526515 /* PFoundation.swift in Sources */,
+				DFE1C8D81C2F52AE009935B1 /* String.swift in Sources */,
 				DF58A93C1C28B5CF00526515 /* OperationError.swift in Sources */,
 				DF58A9331C28B50F00526515 /* OperationQueue.swift in Sources */,
 				DF58A92E1C28B40600526515 /* Error.swift in Sources */,
@@ -333,7 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF58A9091C28B2E400526515 /* PFoundationTests.swift in Sources */,
+				DFE1C8D61C2F491C009935B1 /* DataValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +517,7 @@
 				DF58A90F1C28B2E400526515 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DF58A9101C28B2E400526515 /* Build configuration list for PBXNativeTarget "PFoundationTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +526,7 @@
 				DF58A9121C28B2E400526515 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

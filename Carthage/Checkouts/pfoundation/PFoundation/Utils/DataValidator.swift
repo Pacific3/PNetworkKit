@@ -35,7 +35,7 @@ public enum DefaultValidator: DataValidator {
     case Negative
     
     public func validate(feed: AnyObject) -> Bool {
-        return self == .Positive ? true : false
+        return self == .Positive
     }
 }
 
@@ -43,7 +43,8 @@ public enum Match: String, DataValidator {
     case Email             = "^[_]*([a-z0-9]+(\\.|_*)?)+@([a-z][a-z0-9-]+(\\.|-*\\.))+[a-z]{2,6}$"
     case SixSymbolPassword = "^.{6,}$"
     case Domain            = "^([a-z][a-z0-9-]+(\\.|-*\\.))+[a-z]{2,6}$"
-    case Name              = "^[\\w.']{2,}(\\s[\\w.']{2,})+$"
+    case OneWord           = "^\\w+$"
+    case TwoWords          = "^\\w+\\s\\w+$"
     case PositiveInteger   = "^\\d+$"
     case NegativeInteger   = "^-\\d+$"
     case Integer           = "^-?\\d+$"
@@ -65,6 +66,7 @@ public enum Equal: DataValidator {
     case ToString(String)
     case ToInt(Int)
     case ToFloat(Float)
+    case ToBool(Bool)
     
     public func validate(feed: AnyObject) -> Bool {
         switch self {
@@ -88,6 +90,13 @@ public enum Equal: DataValidator {
             }
             
             return feed == f
+            
+        case .ToBool(let b):
+            guard let feed = feed as? Bool else {
+                return false
+            }
+            
+            return feed == b
         }
     }
 }
