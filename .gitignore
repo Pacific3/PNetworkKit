@@ -1,5 +1,3 @@
-# Xcode
-#
 build/
 *.pbxuser
 !default.pbxuser
@@ -18,6 +16,5 @@ DerivedData
 *.xcuserstate
 *.xcscmblueprint
 .DS_Store
-
 Carthage.pkg
-Carthage/Build
+Carthage/Build/
