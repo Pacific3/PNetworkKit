@@ -29,8 +29,8 @@ public class GetJSONModelOperation<T: JSONParselable>: GroupOperation {
         }
     }
     
-    let query: [String:String]
-    let realmConfiguration: Realm.Configuration?
+    public let query: [String:String]
+    public let realmConfiguration: Realm.Configuration?
     
     private var hasProducedAlert = false
     

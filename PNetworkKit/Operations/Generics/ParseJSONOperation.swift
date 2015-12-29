@@ -1,6 +1,6 @@
 
 public class ParseJSONOperation<T: JSONParselable>: Operation {
-    internal var parsedObjects: [T]?
+    public var parsedObjects: [T]?
     let cacheFile: NSURL
     
     private var _realmConfiguration: Realm.Configuration?
