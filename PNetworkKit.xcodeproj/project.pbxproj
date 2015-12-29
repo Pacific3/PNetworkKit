@@ -17,6 +17,8 @@
 		DF49F8F51C29F9D600D3605D /* UserNotificationCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F41C29F9D600D3605D /* UserNotificationCondition.swift */; };
 		DF49F8F81C29FB4500D3605D /* UIUserNotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F71C29FB4500D3605D /* UIUserNotificationSettings.swift */; };
 		DF49F8FA1C2A013600D3605D /* RemoteNotificationCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F91C2A013600D3605D /* RemoteNotificationCondition.swift */; };
+		DF4F4A961C33303600865F6E /* GetJSONModelByPollingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4F4A951C33303600865F6E /* GetJSONModelByPollingOperation.swift */; };
+		DF4F4A991C3330C200865F6E /* ProduceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4F4A981C3330C200865F6E /* ProduceAlert.swift */; };
 		DFA41C131C28CB4900483D23 /* PNetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA41C121C28CB4900483D23 /* PNetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA41C1A1C28CB4A00483D23 /* PNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA41C0F1C28CB4900483D23 /* PNetworkKit.framework */; };
 		DFA41C1F1C28CB4A00483D23 /* PNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C1E1C28CB4A00483D23 /* PNetworkKitTests.swift */; };
@@ -52,6 +54,8 @@
 		DF49F8F41C29F9D600D3605D /* UserNotificationCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationCondition.swift; sourceTree = "<group>"; };
 		DF49F8F71C29FB4500D3605D /* UIUserNotificationSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUserNotificationSettings.swift; sourceTree = "<group>"; };
 		DF49F8F91C2A013600D3605D /* RemoteNotificationCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteNotificationCondition.swift; sourceTree = "<group>"; };
+		DF4F4A951C33303600865F6E /* GetJSONModelByPollingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetJSONModelByPollingOperation.swift; sourceTree = "<group>"; };
+		DF4F4A981C3330C200865F6E /* ProduceAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProduceAlert.swift; sourceTree = "<group>"; };
 		DFA41C0F1C28CB4900483D23 /* PNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA41C121C28CB4900483D23 /* PNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PNetworkKit.h; sourceTree = "<group>"; };
 		DFA41C141C28CB4900483D23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +115,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		DF4F4A971C3330AE00865F6E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DF4F4A981C3330C200865F6E /* ProduceAlert.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		DFA41C051C28CB4900483D23 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +166,7 @@
 		DFA41C311C28CE4700483D23 /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				DF4F4A971C3330AE00865F6E /* Helpers */,
 				DFA41C411C28D3B800483D23 /* Generics */,
 				DFA41C341C28CEB100483D23 /* Conditions */,
 				DFA41C321C28CE8500483D23 /* URLSessionTaskOperation.swift */,
@@ -189,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */,
+				DF4F4A951C33303600865F6E /* GetJSONModelByPollingOperation.swift */,
 				DFA41C441C28D44200483D23 /* DownloadJSONModelOperation.swift */,
 				DFA41C461C28D4B200483D23 /* ParseJSONOperation.swift */,
 			);
@@ -305,6 +319,7 @@
 			files = (
 				DF2A54C11C2B6BA80064F889 /* ReverseGeocodeOperation.swift in Sources */,
 				DFA41C431C28D3CC00483D23 /* GetJSONModelOperation.swift in Sources */,
+				DF4F4A991C3330C200865F6E /* ProduceAlert.swift in Sources */,
 				DF49F8FA1C2A013600D3605D /* RemoteNotificationCondition.swift in Sources */,
 				DFA41C3C1C28CFB500483D23 /* JSONParselable.swift in Sources */,
 				DFA41C361C28CF2B00483D23 /* ReachabilityCondition.swift in Sources */,
@@ -314,6 +329,7 @@
 				DFA41C3E1C28CFDB00483D23 /* Pollable.swift in Sources */,
 				DFA41C331C28CE8500483D23 /* URLSessionTaskOperation.swift in Sources */,
 				DFA41C401C28D2A300483D23 /* Endpoint.swift in Sources */,
+				DF4F4A961C33303600865F6E /* GetJSONModelByPollingOperation.swift in Sources */,
 				DF49F8F81C29FB4500D3605D /* UIUserNotificationSettings.swift in Sources */,
 				DFA41C451C28D44200483D23 /* DownloadJSONModelOperation.swift in Sources */,
 				DFA41C391C28CF6A00483D23 /* LocationCondition.swift in Sources */,
