@@ -1,16 +1,9 @@
-//
-//  GetJSONModelOperation.swift
-//  reserbus-ios
-//
-//  Created by Swanros on 8/24/15.
-//  Copyright © 2015 Reserbus S. de R.L. de C.V. All rights reserved.
-//
 
 public class GetJSONModelOperation<T: JSONParselable>: GroupOperation {
-    internal var _downloadOperation: DownloadJSONOperation?
-    internal var _parseOperation: ParseJSONOperation<T>?
+    public var _downloadOperation: DownloadJSONOperation?
+    public var _parseOperation: ParseJSONOperation<T>?
     
-    var downloadOperation: DownloadJSONOperation {
+    public var downloadOperation: DownloadJSONOperation {
         if let op = _downloadOperation { return op } else {
             _downloadOperation = DownloadJSONOperation(cacheFile: cacheFile)
             
@@ -18,7 +11,7 @@ public class GetJSONModelOperation<T: JSONParselable>: GroupOperation {
         }
     }
     
-    var parseOperation: ParseJSONOperation<T> {
+    public var parseOperation: ParseJSONOperation<T> {
         if let op = _parseOperation { return op } else {
             _parseOperation = ParseJSONOperation<T>(cacheFile: cacheFile)
             
@@ -26,11 +19,11 @@ public class GetJSONModelOperation<T: JSONParselable>: GroupOperation {
         }
     }
     
-    var cacheFile: NSURL {
+    public var cacheFile: NSURL {
         return cachesDirectory.URLByAppendingPathComponent("Cache\(self.dynamicType).json")
     }
     
-    var cachesDirectory: NSURL {
+    public var cachesDirectory: NSURL {
         do {
             return try! NSFileManager.defaultManager().URLForDirectory(.CachesDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: true)
         }

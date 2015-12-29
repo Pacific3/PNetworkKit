@@ -16,60 +16,42 @@ public class DownloadJSONOperation: GroupOperation {
     
     let cacheFile: NSURL
     
-    var endpointType: EndpointType {
+    public var endpointType: EndpointType {
         return .Simple
     }
     
-    var simpleEndpoint: Endpoint {
+    public var simpleEndpoint: Endpoint {
         return NullEndpoint()
     }
     
-    var composedEndpoint: (Endpoint, [String:String]) {
+    public var composedEndpoint: (Endpoint, [String:String]) {
         return (NullEndpoint(), ["":""])
     }
     
-    var method: HTTPMethod {
+    public var method: HTTPMethod {
         return .GET
     }
     
-    var headerParams: [String:String]? {
+    public var headerParams: [String:String]? {
         return nil
     }
     
-    var requestBody: [String:AnyObject]? {
+    public var requestBody: [String:AnyObject]? {
         return nil
     }
     
-    public init(cacheFile: NSURL, url defaultURL: NSURL? = nil) {
+    public init?(cacheFile: NSURL, url defaultURL: NSURL? = nil) {
         self.cacheFile = cacheFile
         super.init(operations: [])
         name = "DownloadJSONOperation<\(self.dynamicType)>"
         
-        var url: NSURL?
-        
-        if let defaultURL = defaultURL {
-            url = defaultURL
-        } else {
-            switch endpointType {
-            case .Simple:
-                url = simpleEndpointURL
-                
-            case .Composed:
-                url = composedEndpointURL
-            }
+        guard let url = getURL(defaultURL: defaultURL) else {
+            return
         }
         
-        let request = NSMutableURLRequest(URL: url!)
+        let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = method.rawValue
-        
-        if let requestBody = requestBody {
-            do {
-                let requestData = try NSJSONSerialization.dataWithJSONObject(requestBody, options: .PrettyPrinted)
-                request.HTTPBody = requestData
-            } catch {
-                debugPrint("The request data \(requestBody) could not be serialized.")
-            }
-        }
+        request.HTTPBody = getRequestBodyData()
         
         if let headerParams = headerParams {
             for param in headerParams {
@@ -77,6 +59,13 @@ public class DownloadJSONOperation: GroupOperation {
             }
         }
         
+        let networkTaskOperation = getDownloadTaskOperationWithRequest(request)
+        
+        addOperation(networkTaskOperation)
+        addOperation(NSOperation())
+    }
+    
+    private func getDownloadTaskOperationWithRequest(request: NSURLRequest) -> URLSessionTaskOperation {
         let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
         let task = session.downloadTaskWithRequest(request) { url, response, error in
             self.dataRequestFinishedWithUrl(url, response: response, error: error)
@@ -84,14 +73,13 @@ public class DownloadJSONOperation: GroupOperation {
         
         let networkTaskOperation = URLSessionTaskOperation(task: task)
         
-        let reachabilityCondition = ReachabilityCondition(host: url!)
+        let reachabilityCondition = ReachabilityCondition(host: request.URL!)
         networkTaskOperation.addCondition(reachabilityCondition)
         
         let networkObserver = NetworkActivityObserver()
         networkTaskOperation.addObserver(networkObserver)
         
-        addOperation(networkTaskOperation)
-        addOperation(NSOperation())
+        return networkTaskOperation
     }
     
     private func dataRequestFinishedWithUrl(url: NSURL?, response: NSURLResponse?, error: NSError?) {
@@ -112,5 +100,36 @@ public class DownloadJSONOperation: GroupOperation {
         } else {
             
         }
+    }
+    
+    private func getURL(defaultURL defaultURL: NSURL?) -> NSURL? {
+        var url: NSURL?
+        
+        if let defaultURL = defaultURL {
+            url = defaultURL
+        } else {
+            switch endpointType {
+            case .Simple:
+                url = simpleEndpointURL
+                
+            case .Composed:
+                url = composedEndpointURL
+            }
+        }
+        
+        return url
+    }
+    
+    private func getRequestBodyData() -> NSData? {
+        if let requestBody = requestBody {
+            do {
+                let requestData = try NSJSONSerialization.dataWithJSONObject(requestBody, options: .PrettyPrinted)
+                return requestData
+            } catch {
+                debugPrint("The request data \(requestBody) could not be serialized.")
+            }
+        }
+        
+        return nil
     }
 }

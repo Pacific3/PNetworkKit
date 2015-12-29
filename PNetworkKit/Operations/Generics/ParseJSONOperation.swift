@@ -4,7 +4,7 @@ public class ParseJSONOperation<T: JSONParselable>: Operation {
     let cacheFile: NSURL
     
     private var _realmConfiguration: Realm.Configuration?
-    var realmConfiguration: Realm.Configuration? {
+    public var realmConfiguration: Realm.Configuration? {
         get {
             if let rc = _realmConfiguration { return rc } else {
                 _realmConfiguration = Realm.Configuration()
@@ -18,7 +18,7 @@ public class ParseJSONOperation<T: JSONParselable>: Operation {
         }
     }
     
-    init(cacheFile c: NSURL, realmConfiguration rc: Realm.Configuration? = nil) {
+    public init(cacheFile c: NSURL, realmConfiguration rc: Realm.Configuration? = nil) {
         cacheFile = c
         
         super.init()
@@ -58,13 +58,13 @@ public class ParseJSONOperation<T: JSONParselable>: Operation {
         }
     }
     
-    func parse(json: [[String:AnyObject]]) {
+    public func parse(json: [[String:AnyObject]]) {
         parsedObjects = json.flatMap{ T.withData($0) }
         process()
         finish()
     }
     
-    func process() {
+    public func process() {
         fatalError("Subclasses must override this method to process parsedObjects.")
     }
 }
