@@ -1,3 +1,4 @@
+
 extension UIUserNotificationSettings {
     public func contains(settings: UIUserNotificationSettings) -> Bool {
         if !types.contains(settings.types) {

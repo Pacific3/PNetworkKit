@@ -11,6 +11,7 @@
 		DF0CAA3D1C2F59A900397E78 /* PFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA391C2F59A900397E78 /* PFoundation.framework */; };
 		DF0CAA3E1C2F59A900397E78 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA3A1C2F59A900397E78 /* RealmSwift.framework */; };
 		DF0CAA3F1C2F59A900397E78 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA3B1C2F59A900397E78 /* Realm.framework */; };
+		DF17EF481C3EDE63004071D9 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF17EF471C3EDE63004071D9 /* UIImageView.swift */; };
 		DF2A54C01C2B6BA80064F889 /* GeocodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A54BE1C2B6BA80064F889 /* GeocodeOperation.swift */; };
 		DF2A54C11C2B6BA80064F889 /* ReverseGeocodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A54BF1C2B6BA80064F889 /* ReverseGeocodeOperation.swift */; };
 		DF49F8F31C29F88300D3605D /* GetCurrentLocationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F21C29F88300D3605D /* GetCurrentLocationOperation.swift */; };
@@ -48,6 +49,7 @@
 		DF0CAA391C2F59A900397E78 /* PFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PFoundation.framework; path = Carthage/Build/iOS/PFoundation.framework; sourceTree = "<group>"; };
 		DF0CAA3A1C2F59A900397E78 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		DF0CAA3B1C2F59A900397E78 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		DF17EF471C3EDE63004071D9 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		DF2A54BE1C2B6BA80064F889 /* GeocodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodeOperation.swift; sourceTree = "<group>"; };
 		DF2A54BF1C2B6BA80064F889 /* ReverseGeocodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeOperation.swift; sourceTree = "<group>"; };
 		DF49F8F21C29F88300D3605D /* GetCurrentLocationOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCurrentLocationOperation.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				DF49F8F71C29FB4500D3605D /* UIUserNotificationSettings.swift */,
+				DF17EF471C3EDE63004071D9 /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				DFA41C471C28D4B200483D23 /* ParseJSONOperation.swift in Sources */,
 				DF2A54C01C2B6BA80064F889 /* GeocodeOperation.swift in Sources */,
 				DFA41C3E1C28CFDB00483D23 /* Pollable.swift in Sources */,
+				DF17EF481C3EDE63004071D9 /* UIImageView.swift in Sources */,
 				DFA41C331C28CE8500483D23 /* URLSessionTaskOperation.swift in Sources */,
 				DFA41C401C28D2A300483D23 /* Endpoint.swift in Sources */,
 				DF4F4A961C33303600865F6E /* GetJSONModelByPollingOperation.swift in Sources */,
