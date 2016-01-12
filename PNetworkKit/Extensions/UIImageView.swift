@@ -74,6 +74,7 @@ public extension UIImageView {
                             strongSelf.image = serializedImage
                         },
                         completion: nil)
+                    
                     UIImageView.p_sharedImageCache.cacheImage(serializedImage, forRequest: request)
                 }
             }
@@ -85,8 +86,11 @@ public extension UIImageView {
     }
     
     public func p_cancelImageRequestOperation() {
-        imageRequestOperation?.cancel()
-        imageRequestOperation = nil
+        guard let operation = imageRequestOperation else {
+            return
+        }
+        
+        operation.cancel()
     }
     
     public func p_setImageWithURL(url: NSURL) {

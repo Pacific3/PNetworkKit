@@ -27,10 +27,4 @@ public class URLSessionTaskOperation: Operation {
             finish()
         }
     }
-    
-    override public func cancel() {
-        //FIXME: Crash if scroll before image is loaded
-        task.cancel()
-        super.cancel()
-    }
 }
