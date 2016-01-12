@@ -52,8 +52,6 @@ public extension UIImageView {
                 image = placeholder
             }
             
-            p_cancelImageRequestOperation()
-            
             let task = session.dataTaskWithRequest(request) { [weak self] data, response, error in
                 executeOnMainThread {
                     guard let strongSelf = self else {
