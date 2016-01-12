@@ -11,6 +11,7 @@ public class URLSessionTaskOperation: Operation {
     public init(task: NSURLSessionTask) {
         assert(task.state == .Suspended, "Task must be suspended.")
         self.task = task
+        
         super.init()
         
         addObserver(
@@ -25,7 +26,7 @@ public class URLSessionTaskOperation: Operation {
     override public func execute() {
         assert(task.state == .Suspended, "Task was resumed by something other than \(self).")
         
-        task.addObserver(self, forKeyPath: "state", options: [], context: &URLSessionTaskOperationContext)
+        task.addObserver(self, forKeyPath: "state", options: NSKeyValueObservingOptions(), context: &URLSessionTaskOperationContext)
         
         task.resume()
     }
@@ -35,12 +36,13 @@ public class URLSessionTaskOperation: Operation {
         
         stateLock.withCriticalScope {
             if object === task && keyPath == "state" && !observerRemoved {
+                
                 switch task.state {
                 case .Completed:
                     finish()
                     fallthrough
                     
-                case .Canceling:
+                case .Canceling, .Completed:
                     observerRemoved = true
                     task.removeObserver(self, forKeyPath: "state")
                     
