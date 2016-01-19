@@ -1,10 +1,26 @@
 
+private let urlSession = NSURLSession(
+    configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration()
+)
+
 public enum HTTPMethod: String {
-    case GET = "GET"
+    case GET  = "GET"
     case POST = "POST"
 }
 
 public class DownloadJSONOperation: GroupOperation {
+    // MARK: - Support Types
+    public enum DownloadConfiguration {
+        case DownloadAndSaveToURL
+        case DownloadAndReturnForManualParsing
+    }
+    
+    
+    // MARK: - Private Properties
+    
+    private let errorCompletion: (NSError -> Void)?
+    private let completion: ([String:AnyObject]? -> Void)?
+    
     private var composedEndpointURL: NSURL {
         let (endpoint, params) = self.composedEndpoint
         return endpoint.URL(params: params)
@@ -14,7 +30,13 @@ public class DownloadJSONOperation: GroupOperation {
         return simpleEndpoint.URL()
     }
     
-    let cacheFile: NSURL
+    
+    // MARK: - Public Properties/Overridables
+    public let cacheFile: NSURL
+    
+    public var downloadConfiguration: DownloadConfiguration {
+        return .DownloadAndSaveToURL
+    }
     
     public var endpointType: EndpointType {
         return .Simple
@@ -40,13 +62,59 @@ public class DownloadJSONOperation: GroupOperation {
         return nil
     }
     
-    public init?(cacheFile: NSURL, url defaultURL: NSURL? = nil) {
-        self.cacheFile = cacheFile
-        super.init(operations: [])
-        name = "DownloadJSONOperation<\(self.dynamicType)>"
-        
+    
+    // MARK: - Public Initialisers
+    
+    public init?(
+        cacheFile: NSURL,
+        url defaultURL: NSURL? = nil
+        ) {
+            self.cacheFile = cacheFile
+            errorCompletion = nil
+            completion = nil
+            
+            super.init(operations: [])
+            name = "DownloadJSONOperation<\(self.dynamicType)>"
+            
+            guard let request = getRequestWithDefaultURL(defaultURL) else {
+                return
+            }
+            
+            let networkTaskOperation = getDownloadTaskOperationWithRequest(request)
+            
+            addOperation(networkTaskOperation)
+            addOperation(NSOperation())
+    }
+    
+    public init?(
+        defaultURL: NSURL? = nil,
+        completion: ([String:AnyObject]? -> Void)?,
+        error: (NSError -> Void)?
+        ) {
+            cacheFile = NSURL()
+            errorCompletion = error
+            self.completion = completion
+            
+            super.init(operations: [])
+            name = "DownloadJSONOperation<\(self.dynamicType)>"
+            
+            guard let request = getRequestWithDefaultURL(defaultURL) else {
+                return
+            }
+            
+            let networkTaskOperation = getDataTaskOperationWithRequest(request)
+            
+            addOperation(networkTaskOperation)
+            addOperation(NSOperation())
+    }
+}
+
+
+// MARK: - Private Methods
+extension DownloadJSONOperation {
+    private func getRequestWithDefaultURL(defaultURL: NSURL?) -> NSURLRequest? {
         guard let url = getURL(defaultURL: defaultURL) else {
-            return
+            return nil
         }
         
         let request = NSMutableURLRequest(URL: url)
@@ -59,47 +127,97 @@ public class DownloadJSONOperation: GroupOperation {
             }
         }
         
-        let networkTaskOperation = getDownloadTaskOperationWithRequest(request)
-        
-        addOperation(networkTaskOperation)
-        addOperation(NSOperation())
+        return request
     }
     
-    private func getDownloadTaskOperationWithRequest(request: NSURLRequest) -> URLSessionTaskOperation {
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
-        let task = session.downloadTaskWithRequest(request) { url, response, error in
-            self.dataRequestFinishedWithUrl(url, response: response, error: error)
-        }
-        
-        let networkTaskOperation = URLSessionTaskOperation(task: task)
-        
-        let reachabilityCondition = ReachabilityCondition(host: request.URL!)
-        networkTaskOperation.addCondition(reachabilityCondition)
-        
-        let networkObserver = NetworkActivityObserver()
-        networkTaskOperation.addObserver(networkObserver)
-        
-        return networkTaskOperation
-    }
-    
-    private func dataRequestFinishedWithUrl(url: NSURL?, response: NSURLResponse?, error: NSError?) {
-        if let localUrl = url {
-            do {
-                try NSFileManager.defaultManager().removeItemAtURL(cacheFile)
-            } catch { }
-            
-            do {
-                try NSFileManager.defaultManager().moveItemAtURL(localUrl, toURL: cacheFile)
-            } catch let error as NSError {
-                print("error moving file!: \(error)")
-                aggregateError(error)
+    private func getDataTaskOperationWithRequest(
+        request: NSURLRequest
+        ) -> URLSessionTaskOperation {
+            let task = urlSession.dataTaskWithRequest(request) {
+                data, response, error in
+                self.dataRequestFinishedWithData(
+                    data,
+                    response: response,
+                    error: error
+                )
             }
-        } else if let error = error {
-            print("error downloading data!: \(error)")
-            aggregateError(error)
-        } else {
             
-        }
+            let networkTaskOperation = URLSessionTaskOperation(task: task)
+            
+            return prepareNetworkTaskOperation(networkTaskOperation)
+    }
+    
+    private func getDownloadTaskOperationWithRequest(
+        request: NSURLRequest
+        ) -> URLSessionTaskOperation {
+            let task = urlSession.downloadTaskWithRequest(request) {
+                url, response, error in
+                self.downloadRequestFinishedWithUrl(
+                    url,
+                    response: response,
+                    error: error
+                )
+            }
+            
+            let networkTaskOperation = URLSessionTaskOperation(task: task)
+            
+            return prepareNetworkTaskOperation(networkTaskOperation)
+    }
+    
+    private func dataRequestFinishedWithData(
+        data: NSData?,
+        response: NSURLResponse?,
+        error: NSError?
+        ) {
+            if let error = error {
+                errorCompletion?(error)
+                finishWithError(error)
+                
+                return
+            }
+            
+            guard let data = data else {
+                return
+            }
+            
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data,
+                    options: .MutableContainers
+                    ) as? [String:AnyObject]
+                completion?(json)
+            } catch let error as NSError {
+                errorCompletion?(error)
+                finishWithError(error)
+                
+                return
+            }
+    }
+    
+    private func downloadRequestFinishedWithUrl(
+        url: NSURL?,
+        response: NSURLResponse?,
+        error: NSError?
+        ) {
+            if let localUrl = url {
+                do {
+                    try NSFileManager.defaultManager().removeItemAtURL(cacheFile)
+                } catch { }
+                
+                do {
+                    try NSFileManager.defaultManager().moveItemAtURL(
+                        localUrl,
+                        toURL: cacheFile
+                    )
+                } catch let error as NSError {
+                    print("error moving file!: \(error)")
+                    aggregateError(error)
+                }
+            } else if let error = error {
+                print("error downloading data!: \(error)")
+                aggregateError(error)
+            } else {
+                
+            }
     }
     
     private func getURL(defaultURL defaultURL: NSURL?) -> NSURL? {
@@ -123,13 +241,30 @@ public class DownloadJSONOperation: GroupOperation {
     private func getRequestBodyData() -> NSData? {
         if let requestBody = requestBody {
             do {
-                let requestData = try NSJSONSerialization.dataWithJSONObject(requestBody, options: .PrettyPrinted)
+                let requestData = try NSJSONSerialization.dataWithJSONObject(
+                    requestBody,
+                    options: .PrettyPrinted
+                )
                 return requestData
             } catch {
-                debugPrint("The request data \(requestBody) could not be serialized.")
+                debugPrint("Data \(requestBody) could not be serialized.")
             }
         }
         
         return nil
+    }
+    
+    private func prepareNetworkTaskOperation(
+        networkTaskOperation: URLSessionTaskOperation
+        ) -> URLSessionTaskOperation {
+            if let url = networkTaskOperation.task.originalRequest?.URL {
+                let reachabilityCondition = ReachabilityCondition(host: url)
+                networkTaskOperation.addCondition(reachabilityCondition)
+            }
+            
+            let networkObserver = NetworkActivityObserver()
+            networkTaskOperation.addObserver(networkObserver)
+            
+            return networkTaskOperation
     }
 }
