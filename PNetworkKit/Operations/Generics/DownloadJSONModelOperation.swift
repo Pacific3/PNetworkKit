@@ -9,17 +9,9 @@ public enum HTTPMethod: String {
 }
 
 public class DownloadJSONOperation: GroupOperation {
-    // MARK: - Support Types
-    public enum DownloadConfiguration {
-        case DownloadAndSaveToURL
-        case DownloadAndReturnForManualParsing
-    }
-    
-    
     // MARK: - Private Properties
-    
-    private let errorCompletion: (NSError -> Void)?
-    private let completion: ([String:AnyObject]? -> Void)?
+    private let _error: (NSError -> Void)?
+    private let _completion: ([String:AnyObject]? -> Void)?
     
     private var composedEndpointURL: NSURL {
         let (endpoint, params) = self.composedEndpoint
@@ -33,10 +25,6 @@ public class DownloadJSONOperation: GroupOperation {
     
     // MARK: - Public Properties/Overridables
     public let cacheFile: NSURL
-    
-    public var downloadConfiguration: DownloadConfiguration {
-        return .DownloadAndSaveToURL
-    }
     
     public var endpointType: EndpointType {
         return .Simple
@@ -70,8 +58,8 @@ public class DownloadJSONOperation: GroupOperation {
         url defaultURL: NSURL? = nil
         ) {
             self.cacheFile = cacheFile
-            errorCompletion = nil
-            completion = nil
+            _error         = nil
+            _completion    = nil
             
             super.init(operations: [])
             name = "DownloadJSONOperation<\(self.dynamicType)>"
@@ -92,8 +80,8 @@ public class DownloadJSONOperation: GroupOperation {
         error: (NSError -> Void)?
         ) {
             cacheFile = NSURL()
-            errorCompletion = error
-            self.completion = completion
+            _error = error
+            _completion = completion
             
             super.init(operations: [])
             name = "DownloadJSONOperation<\(self.dynamicType)>"
@@ -170,7 +158,7 @@ extension DownloadJSONOperation {
         error: NSError?
         ) {
             if let error = error {
-                errorCompletion?(error)
+                _error?(error)
                 finishWithError(error)
                 
                 return
@@ -184,9 +172,9 @@ extension DownloadJSONOperation {
                 let json = try NSJSONSerialization.JSONObjectWithData(data,
                     options: .MutableContainers
                     ) as? [String:AnyObject]
-                completion?(json)
+                _completion?(json)
             } catch let error as NSError {
-                errorCompletion?(error)
+                _error?(error)
                 finishWithError(error)
                 
                 return
