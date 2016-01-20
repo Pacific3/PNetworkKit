@@ -23,10 +23,22 @@ public class DownloadJSONOperation: GroupOperation {
     }
     
     
-    // MARK: - Public Properties/Overridables
-    public let networkTaskOperation: URLSessionTaskOperation
+    // MARK: -  Public Support Types 
+    public enum DownloadConfiguration {
+        case DownloadAndSaveToURL
+        case DownloadAndReturnToParseManually
+    }
     
-    public let cacheFile: NSURL
+    // MARK: - Public Properties/Overridables
+    public var networkTaskOperation: URLSessionTaskOperation?
+    
+    public var downloadedJSON: [String:AnyObject]?
+    
+    public let cacheFile: NSURL?
+    
+    public var downloadConfiguration: DownloadConfiguration {
+        return .DownloadAndReturnToParseManually
+    }
     
     public var endpointType: EndpointType {
         return .Simple
@@ -59,21 +71,36 @@ public class DownloadJSONOperation: GroupOperation {
         cacheFile: NSURL,
         url: NSURL? = nil
         ) {
-            self.cacheFile = cacheFile
-            __error        = nil
-            __completion   = nil
+            self.cacheFile       = cacheFile
+            __error              = nil
+            __completion         = nil
+            downloadedJSON       = nil
+            networkTaskOperation = nil
             
             super.init(operations: [])
+            
+            if downloadConfiguration != .DownloadAndSaveToURL {
+                fatalError(
+                    "Trying to initialize download operation" +
+                        "with wrong configuration. It should be " +
+                        "\(DownloadConfiguration.DownloadAndSaveToURL) but is" +
+                    "\(downloadConfiguration)"
+                )
+                return nil
+            }
+            
             name = "DownloadJSONOperation<\(self.dynamicType)>"
             
             guard let request = getRequestWithDefaultURL(url) else {
-                return
+                return nil
             }
             
             networkTaskOperation = getDownloadTaskOperationWithRequest(request)
             
-            addOperation(networkTaskOperation)
-            addOperation(NSOperation())
+            if let op = networkTaskOperation {
+                addOperation(op)
+                addOperation(NSOperation())
+            }
     }
     
     public init?(
@@ -81,21 +108,36 @@ public class DownloadJSONOperation: GroupOperation {
         completion: ([String:AnyObject]? -> Void)?,
         error: (NSError -> Void)?
         ) {
-            cacheFile    = NSURL()
-            __error      = error
-            __completion = completion
+            cacheFile            = nil
+            __error              = error
+            __completion         = completion
+            networkTaskOperation = nil
+            downloadedJSON       = nil
             
             super.init(operations: [])
+            
+            if downloadConfiguration != .DownloadAndReturnToParseManually {
+                fatalError(
+                    "Trying to initialize download operation" +
+                        "with wrong configuration. It should be " +
+                        "\(DownloadConfiguration.DownloadAndReturnToParseManually)" +
+                    "but is \(downloadConfiguration)"
+                )
+                return nil
+            }
+            
             name = "DownloadJSONOperation<\(self.dynamicType)>"
             
             guard let request = getRequestWithDefaultURL(url) else {
-                return
+                return nil
             }
             
             networkTaskOperation = getDataTaskOperationWithRequest(request)
             
-            addOperation(networkTaskOperation)
-            addOperation(NSOperation())
+            if let op = networkTaskOperation {
+                addOperation(op)
+                addOperation(NSOperation())
+            }
     }
 }
 
@@ -176,6 +218,7 @@ extension DownloadJSONOperation {
                     options: .MutableContainers
                     ) as? [String:AnyObject]
                 __completion?(json)
+                self.downloadedJSON = json
             } catch let error as NSError {
                 __error?(error)
                 finishWithError(error)
@@ -189,6 +232,10 @@ extension DownloadJSONOperation {
         response: NSURLResponse?,
         error: NSError?
         ) {
+            guard let cacheFile = cacheFile else {
+                return
+            }
+            
             if let localUrl = url {
                 do {
                     try NSFileManager.defaultManager().removeItemAtURL(cacheFile)
@@ -255,5 +302,17 @@ extension DownloadJSONOperation {
             networkTaskOperation.addObserver(networkObserver)
             
             return networkTaskOperation
+    }
+}
+
+extension DownloadJSONOperation.DownloadConfiguration: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .DownloadAndReturnToParseManually:
+            return ".DownloadAndReturnToParseManually"
+            
+        case .DownloadAndSaveToURL:
+            return ".DownloadAndSaveToURL"
+        }
     }
 }

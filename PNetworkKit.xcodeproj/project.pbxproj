@@ -31,7 +31,7 @@
 		DFA41C3E1C28CFDB00483D23 /* Pollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C3D1C28CFDB00483D23 /* Pollable.swift */; };
 		DFA41C401C28D2A300483D23 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C3F1C28D2A300483D23 /* Endpoint.swift */; };
 		DFA41C431C28D3CC00483D23 /* GetJSONModelOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */; };
-		DFA41C451C28D44200483D23 /* DownloadJSONModelOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C441C28D44200483D23 /* DownloadJSONModelOperation.swift */; };
+		DFA41C451C28D44200483D23 /* DownloadJSONOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C441C28D44200483D23 /* DownloadJSONOperation.swift */; };
 		DFA41C471C28D4B200483D23 /* ParseJSONOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C461C28D4B200483D23 /* ParseJSONOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,7 +73,7 @@
 		DFA41C3D1C28CFDB00483D23 /* Pollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pollable.swift; sourceTree = "<group>"; };
 		DFA41C3F1C28D2A300483D23 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetJSONModelOperation.swift; sourceTree = "<group>"; };
-		DFA41C441C28D44200483D23 /* DownloadJSONModelOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadJSONModelOperation.swift; sourceTree = "<group>"; };
+		DFA41C441C28D44200483D23 /* DownloadJSONOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadJSONOperation.swift; sourceTree = "<group>"; };
 		DFA41C461C28D4B200483D23 /* ParseJSONOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseJSONOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,7 +208,7 @@
 			children = (
 				DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */,
 				DF4F4A951C33303600865F6E /* GetJSONModelByPollingOperation.swift */,
-				DFA41C441C28D44200483D23 /* DownloadJSONModelOperation.swift */,
+				DFA41C441C28D44200483D23 /* DownloadJSONOperation.swift */,
 				DF91011A1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift */,
 				DFA41C461C28D4B200483D23 /* ParseJSONOperation.swift */,
 			);
@@ -338,7 +338,7 @@
 				DFA41C401C28D2A300483D23 /* Endpoint.swift in Sources */,
 				DF4F4A961C33303600865F6E /* GetJSONModelByPollingOperation.swift in Sources */,
 				DF49F8F81C29FB4500D3605D /* UIUserNotificationSettings.swift in Sources */,
-				DFA41C451C28D44200483D23 /* DownloadJSONModelOperation.swift in Sources */,
+				DFA41C451C28D44200483D23 /* DownloadJSONOperation.swift in Sources */,
 				DFA41C391C28CF6A00483D23 /* LocationCondition.swift in Sources */,
 				DF91011B1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift in Sources */,
 				DF49F8F51C29F9D600D3605D /* UserNotificationCondition.swift in Sources */,
