@@ -20,6 +20,7 @@
 		DF49F8FA1C2A013600D3605D /* RemoteNotificationCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F91C2A013600D3605D /* RemoteNotificationCondition.swift */; };
 		DF4F4A961C33303600865F6E /* GetJSONModelByPollingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4F4A951C33303600865F6E /* GetJSONModelByPollingOperation.swift */; };
 		DF4F4A991C3330C200865F6E /* ProduceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4F4A981C3330C200865F6E /* ProduceAlert.swift */; };
+		DF91011B1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF91011A1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift */; };
 		DFA41C131C28CB4900483D23 /* PNetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA41C121C28CB4900483D23 /* PNetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFA41C1A1C28CB4A00483D23 /* PNetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA41C0F1C28CB4900483D23 /* PNetworkKit.framework */; };
 		DFA41C1F1C28CB4A00483D23 /* PNetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C1E1C28CB4A00483D23 /* PNetworkKitTests.swift */; };
@@ -58,6 +59,7 @@
 		DF49F8F91C2A013600D3605D /* RemoteNotificationCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteNotificationCondition.swift; sourceTree = "<group>"; };
 		DF4F4A951C33303600865F6E /* GetJSONModelByPollingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetJSONModelByPollingOperation.swift; sourceTree = "<group>"; };
 		DF4F4A981C3330C200865F6E /* ProduceAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProduceAlert.swift; sourceTree = "<group>"; };
+		DF91011A1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadJSONByPollingOperation.swift; sourceTree = "<group>"; };
 		DFA41C0F1C28CB4900483D23 /* PNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA41C121C28CB4900483D23 /* PNetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PNetworkKit.h; sourceTree = "<group>"; };
 		DFA41C141C28CB4900483D23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */,
 				DF4F4A951C33303600865F6E /* GetJSONModelByPollingOperation.swift */,
 				DFA41C441C28D44200483D23 /* DownloadJSONModelOperation.swift */,
+				DF91011A1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift */,
 				DFA41C461C28D4B200483D23 /* ParseJSONOperation.swift */,
 			);
 			path = Generics;
@@ -337,6 +340,7 @@
 				DF49F8F81C29FB4500D3605D /* UIUserNotificationSettings.swift in Sources */,
 				DFA41C451C28D44200483D23 /* DownloadJSONModelOperation.swift in Sources */,
 				DFA41C391C28CF6A00483D23 /* LocationCondition.swift in Sources */,
+				DF91011B1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift in Sources */,
 				DF49F8F51C29F9D600D3605D /* UserNotificationCondition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
