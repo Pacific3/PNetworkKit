@@ -24,6 +24,8 @@ public class DownloadJSONOperation: GroupOperation {
     
     
     // MARK: - Public Properties/Overridables
+    public let networkTaskOperation: URLSessionTaskOperation
+    
     public let cacheFile: NSURL
     
     public var endpointType: EndpointType {
@@ -68,7 +70,7 @@ public class DownloadJSONOperation: GroupOperation {
                 return
             }
             
-            let networkTaskOperation = getDownloadTaskOperationWithRequest(request)
+            networkTaskOperation = getDownloadTaskOperationWithRequest(request)
             
             addOperation(networkTaskOperation)
             addOperation(NSOperation())
@@ -90,7 +92,7 @@ public class DownloadJSONOperation: GroupOperation {
                 return
             }
             
-            let networkTaskOperation = getDataTaskOperationWithRequest(request)
+            networkTaskOperation = getDataTaskOperationWithRequest(request)
             
             addOperation(networkTaskOperation)
             addOperation(NSOperation())
@@ -169,7 +171,8 @@ extension DownloadJSONOperation {
             }
             
             do {
-                let json = try NSJSONSerialization.JSONObjectWithData(data,
+                let json = try NSJSONSerialization.JSONObjectWithData(
+                    data,
                     options: .MutableContainers
                     ) as? [String:AnyObject]
                 __completion?(json)
@@ -203,9 +206,7 @@ extension DownloadJSONOperation {
             } else if let error = error {
                 print("error downloading data!: \(error)")
                 aggregateError(error)
-            } else {
-                
-            }
+            } else {}
     }
     
     private func getURL(defaultURL defaultURL: NSURL?) -> NSURL? {
