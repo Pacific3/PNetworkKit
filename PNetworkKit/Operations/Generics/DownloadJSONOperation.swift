@@ -30,6 +30,8 @@ public class DownloadJSONOperation: GroupOperation {
     }
     
     // MARK: - Public Properties/Overridables
+    public var url: NSURL?
+    
     public var networkTaskOperation: URLSessionTaskOperation?
     
     public var downloadedJSON: [String:AnyObject]?
@@ -76,6 +78,7 @@ public class DownloadJSONOperation: GroupOperation {
             __completion         = nil
             downloadedJSON       = nil
             networkTaskOperation = nil
+            self.url             = url
             
             super.init(operations: [])
             
@@ -113,6 +116,7 @@ public class DownloadJSONOperation: GroupOperation {
             __completion         = completion
             networkTaskOperation = nil
             downloadedJSON       = nil
+            self.url             = url
             
             super.init(operations: [])
             

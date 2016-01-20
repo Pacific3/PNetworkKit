@@ -76,6 +76,7 @@ extension DownloadJSONByPollingOperation {
         }
         else if pollState.hasStarted() && pollState.isPending() {
             _do = pollingDownloadOperation
+            _do?.url = pollToURL
         }
         
         guard let op = _do else {
