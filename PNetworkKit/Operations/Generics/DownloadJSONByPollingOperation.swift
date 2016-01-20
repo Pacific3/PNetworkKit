@@ -16,6 +16,8 @@ public class DownloadJSONByPollingOperation<T: Pollable, S: PollStateProtocol>: 
         super.init(operations: nil)
     }
     
+    
+    // MARK: - Overrides
     public override func operationDidFinish(operation: NSOperation, withErrors errors: [NSError]) {
         if let firstError = errors.first where (operation === initialDownloadOperation || operation === pollingDownloadOperation) {
             produceAlert(firstError, hasProducedAlert: &hasProducedAlert) { generatedOperation in
@@ -46,6 +48,8 @@ public class DownloadJSONByPollingOperation<T: Pollable, S: PollStateProtocol>: 
     }
 }
 
+
+// MARK: - Private Methods
 extension DownloadJSONByPollingOperation {
     private func addSubOperations() {
         guard let pollState = pollState else {
