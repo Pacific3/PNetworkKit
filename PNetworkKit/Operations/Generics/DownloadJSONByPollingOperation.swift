@@ -9,8 +9,13 @@ public class DownloadJSONByPollingOperation<T: Pollable, S: PollStateProtocol>: 
     
     
     // MARK: - Public Properties
-    public var initialDownloadOperation: DownloadJSONOperation?
-    public var pollingDownloadOperation: DownloadJSONOperation?
+    public var initialDownloadOperation: DownloadJSONOperation? {
+        return nil
+    }
+    
+    public var pollingDownloadOperation: DownloadJSONOperation? {
+        return nil
+    }
     
     
     // MARK: - Public Initialisers
