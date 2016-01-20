@@ -1,7 +1,7 @@
 
-public enum PollState: String {
-    case Pending = "pending"
-    case Finished = "finished"
+public protocol PollState {
+    func isPending() -> Bool
+    func isFinished() -> Bool
 }
 
 public protocol Pollable: JSONParselable {

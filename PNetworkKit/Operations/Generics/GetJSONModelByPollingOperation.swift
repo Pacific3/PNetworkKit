@@ -29,7 +29,7 @@ public class GetJSONModelByPollingOperation<T: Object where T: Pollable>: GroupO
     }
     
     public var pollURL: NSURL?
-    public var pollingState: PollState = .Pending
+    public var pollState: PollState?
     public var completion: (Void -> Void)?
     
     public var cacheFile: NSURL {
@@ -78,7 +78,7 @@ public class GetJSONModelByPollingOperation<T: Object where T: Pollable>: GroupO
     }
     
     public override func finish(errors: [NSError]) {
-        if pollingState == .Finished {
+        if pollState!.isFinished() {
             completion?()
             internalQueue.suspended = true
             super.finish(errors)
@@ -106,16 +106,14 @@ public class GetJSONModelByPollingOperation<T: Object where T: Pollable>: GroupO
                 return
             }
             
-            pollingState = container.state
+            pollState = container.state
             
-            switch pollingState {
-            case .Pending:
+            if pollState!.isPending() {
                 pollURL = NSURL(string: container.poll_to)!
                 self.addSuboperations()
-                
-            case .Finished:
+            }
+            else if pollState!.isFinished() {
                 finish(errors)
-                break
             }
         }
     }
