@@ -19,9 +19,10 @@ public class DownloadJSONByPollingOperation<T: Pollable, S: PollStateProtocol>: 
     
     
     // MARK: - Public Initialisers
-    public init(completion: T -> Void, error: NSError -> Void) {
+    public init(completion: T -> Void, error: NSError -> Void, initialPollState: S) {
         __completion = completion
         __error = error
+        pollState = initialPollState
         super.init(operations: nil)
         
         addSubOperations()
