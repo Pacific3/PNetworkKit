@@ -74,11 +74,11 @@ public class DownloadJSONOperation: GroupOperation {
         url: NSURL? = nil
         ) {
             self.cacheFile       = cacheFile
+            self.url             = url
             __error              = nil
             __completion         = nil
             downloadedJSON       = nil
             networkTaskOperation = nil
-            self.url             = url
             
             super.init(operations: [])
             
@@ -94,7 +94,7 @@ public class DownloadJSONOperation: GroupOperation {
             
             name = "DownloadJSONOperation<\(self.dynamicType)>"
             
-            guard let request = getRequestWithDefaultURL(url) else {
+            guard let request = buildRequest() else {
                 return nil
             }
             
@@ -111,12 +111,12 @@ public class DownloadJSONOperation: GroupOperation {
         completion: ([String:AnyObject]? -> Void)?,
         error: (NSError -> Void)?
         ) {
+            self.url             = url
             cacheFile            = nil
             __error              = error
             __completion         = completion
             networkTaskOperation = nil
             downloadedJSON       = nil
-            self.url             = url
             
             super.init(operations: [])
             
@@ -132,7 +132,7 @@ public class DownloadJSONOperation: GroupOperation {
             
             name = "DownloadJSONOperation<\(self.dynamicType)>"
             
-            guard let request = getRequestWithDefaultURL(url) else {
+            guard let request = buildRequest() else {
                 return nil
             }
             
@@ -148,8 +148,8 @@ public class DownloadJSONOperation: GroupOperation {
 
 // MARK: - Private Methods
 extension DownloadJSONOperation {
-    private func getRequestWithDefaultURL(defaultURL: NSURL?) -> NSURLRequest? {
-        guard let url = getURL(defaultURL: defaultURL) else {
+    private func buildRequest() -> NSURLRequest? {
+        guard let url = getURL() else {
             return nil
         }
         
@@ -260,22 +260,22 @@ extension DownloadJSONOperation {
             } else {}
     }
     
-    private func getURL(defaultURL defaultURL: NSURL?) -> NSURL? {
-        var url: NSURL?
+    private func getURL() -> NSURL? {
+        var _url: NSURL?
         
-        if let defaultURL = defaultURL {
-            url = defaultURL
+        if let defaultURL = url {
+            _url = defaultURL
         } else {
             switch endpointType {
             case .Simple:
-                url = simpleEndpointURL
+                _url = simpleEndpointURL
                 
             case .Composed:
-                url = composedEndpointURL
+                _url = composedEndpointURL
             }
         }
         
-        return url
+        return _url
     }
     
     private func getRequestBodyData() -> NSData? {
