@@ -23,6 +23,10 @@ public class DownloadJSONByPollingOperation<T: Pollable, S: PollStateProtocol>: 
         __completion = completion
         __error = error
         super.init(operations: nil)
+        
+        addSubOperations()
+        
+        name = "\(self.dynamicType)"
     }
     
     
