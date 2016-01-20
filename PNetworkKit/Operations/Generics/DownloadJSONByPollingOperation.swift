@@ -4,6 +4,8 @@ public class DownloadJSONByPollingOperation<T: Pollable, S: PollStateProtocol>: 
     private var hasProducedAlert = false
     private var pollToURL: NSURL?
     private var pollState: S?
+    private var __completion: T -> Void
+    private var __error: NSError -> Void
     
     
     // MARK: - Public Properties
@@ -12,39 +14,48 @@ public class DownloadJSONByPollingOperation<T: Pollable, S: PollStateProtocol>: 
     
     
     // MARK: - Public Initialisers
-    public init() {
+    public init(completion: T -> Void, error: NSError -> Void) {
+        __completion = completion
+        __error = error
         super.init(operations: nil)
     }
     
     
     // MARK: - Overrides
-    public override func operationDidFinish(operation: NSOperation, withErrors errors: [NSError]) {
-        if let firstError = errors.first where (operation === initialDownloadOperation || operation === pollingDownloadOperation) {
-            produceAlert(firstError, hasProducedAlert: &hasProducedAlert) { generatedOperation in
-                self.produceOperation(generatedOperation)
+    public override func operationDidFinish(
+        operation: NSOperation,
+        withErrors errors: [NSError]
+        ) {
+            if let firstError = errors.first where (operation === initialDownloadOperation || operation === pollingDownloadOperation) {
+                __error(firstError)
+                produceAlert(
+                    firstError,
+                    hasProducedAlert: &hasProducedAlert) { generatedOperation in
+                        self.produceOperation(generatedOperation)
+                }
+                
+                return
             }
             
-            return
-        }
-        
-        guard let operation = operation as? DownloadJSONOperation else {
-            return
-        }
-        
-        guard let json = operation.downloadedJSON,
-            model = T.withData(json) else {
+            guard let operation = operation as? DownloadJSONOperation else {
                 return
-        }
-        
-        pollState = model.state as? S
-        
-        if pollState!.isPending() {
-            pollToURL = NSURL(string: model.poll_to)
-            self.addSubOperations()
-        }
-        else if pollState!.hasFinished() {
-            finish(errors)
-        }
+            }
+            
+            guard let json = operation.downloadedJSON,
+                model = T.withData(json) else {
+                    return
+            }
+            
+            pollState = model.state as? S
+            
+            if pollState!.isPending() {
+                pollToURL = NSURL(string: model.poll_to)
+                self.addSubOperations()
+            }
+            else if pollState!.hasFinished() {
+                __completion(model)
+                finish(errors)
+            }
     }
 }
 
