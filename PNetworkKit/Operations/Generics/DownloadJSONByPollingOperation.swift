@@ -42,15 +42,16 @@ public class DownloadJSONByPollingOperation<T: Pollable, P: DownloadJSONOperatio
     // MARK: - Overrides
     public override func finish(errors: [NSError]) {
         if pollState!.hasFinished() {
-            print("finished")
+            
             if let _m = model {
                 __completion(_m)
             }
-            
+            print("number of current ops: \(internalQueue.operationCount)")
+            internalQueue.cancelAllOperations()
             internalQueue.suspended = true
             super.finish(errors)
         } else {
-            internalQueue.suspended = false
+            internalQueue.suspended = true
         }
     }
     
@@ -72,31 +73,26 @@ public class DownloadJSONByPollingOperation<T: Pollable, P: DownloadJSONOperatio
                 return
             }
             
-            guard let operation = operation as? DownloadJSONOperation else {
-                print("not equal")
-                return
-            }
-            
-            print("\(operation.name): \(operation.downloadedJSON)")
-            
-            guard let json = operation.downloadedJSON else {
-                return
-            }
-            
-            model = T.withData(json)
-            
-            guard let _m = model else {
-                return
-            }
-            
-            pollState = _m.state
-            
-            if pollState!.isPending() {
-                pollToURL = NSURL(string: _m.poll_to)
-                self.addSubOperations()
-            }
-            else if pollState!.hasFinished() {
-                finish(errors)
+            if let operation = operation as? DownloadJSONOperation {
+                guard let json = operation.downloadedJSON else {
+                    return
+                }
+                
+                model = T.withData(json)
+                
+                guard let _m = model else {
+                    return
+                }
+                
+                pollState = _m.state
+                
+                if pollState!.isPending() {
+                    pollToURL = NSURL(string: _m.poll_to)
+                    self.addSubOperations()
+                }
+                else if pollState!.hasFinished() {
+                    finish(errors)
+                }
             }
     }
 }
@@ -105,7 +101,8 @@ public class DownloadJSONByPollingOperation<T: Pollable, P: DownloadJSONOperatio
 // MARK: - Private Methods
 extension DownloadJSONByPollingOperation {
     private func addSubOperations() {
-        internalQueue.maxConcurrentOperationCount = 1
+        internalQueue.suspended = false
+        
         guard let pollState = pollState else {
             return
         }
@@ -124,9 +121,6 @@ extension DownloadJSONByPollingOperation {
             }
             _do = clone
             _do?.url = pollToURL
-            print("internalqueue suspended: \(internalQueue.suspended)")
-            print("operation finished: \(_do?.finished)")
-            print("new poll url: \(_do?.url)")
         }
         
         guard let op = _do else {

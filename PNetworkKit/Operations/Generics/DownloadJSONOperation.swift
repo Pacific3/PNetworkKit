@@ -183,7 +183,6 @@ extension DownloadJSONOperation {
     private func getDataTaskOperationWithRequest(
         request: NSURLRequest
         ) -> URLSessionTaskOperation {
-            print("Creating request: \(request.URL)")
             let task = urlSession.dataTaskWithRequest(request) {
                 data, response, error in
                 self.dataRequestFinishedWithData(
@@ -279,7 +278,6 @@ extension DownloadJSONOperation {
         var _url: NSURL?
         
         if let defaultURL = url {
-            print("Found default url: \(defaultURL)")
             _url = defaultURL
         } else {
             switch endpointType {
