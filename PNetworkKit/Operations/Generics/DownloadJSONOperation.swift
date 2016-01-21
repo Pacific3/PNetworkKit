@@ -9,9 +9,18 @@ public enum HTTPMethod: String {
 }
 
 public class DownloadJSONOperation: GroupOperation {
+    // MARK: - Private Support Types
+    private enum OperationType {
+        case Data
+        case Download
+    }
+    
+    
     // MARK: - Private Properties
     private let __error: (NSError -> Void)?
     private let __completion: ([String:AnyObject]? -> Void)?
+    
+    private var operationType: OperationType
     
     private var composedEndpointURL: NSURL {
         let (endpoint, params) = self.composedEndpoint
@@ -21,13 +30,14 @@ public class DownloadJSONOperation: GroupOperation {
     private var simpleEndpointURL: NSURL {
         return simpleEndpoint.URL()
     }
-    
+
     
     // MARK: -  Public Support Types 
     public enum DownloadConfiguration {
         case DownloadAndSaveToURL
         case DownloadAndReturnToParseManually
     }
+    
     
     // MARK: - Public Properties/Overridables
     public var url: NSURL?
@@ -80,6 +90,8 @@ public class DownloadJSONOperation: GroupOperation {
             downloadedJSON       = nil
             networkTaskOperation = nil
             
+            operationType = .Download
+            
             super.init(operations: [])
             
             if downloadConfiguration != .DownloadAndSaveToURL {
@@ -93,20 +105,9 @@ public class DownloadJSONOperation: GroupOperation {
             }
             
             name = "DownloadJSONOperation<\(self.dynamicType)>"
-            
-            guard let request = buildRequest() else {
-                return nil
-            }
-            
-            networkTaskOperation = getDownloadTaskOperationWithRequest(request)
-            
-            if let op = networkTaskOperation {
-                addOperation(op)
-                addOperation(NSOperation())
-            }
     }
     
-    public init?(
+    public required init?(
         url: NSURL? = nil,
         completion: ([String:AnyObject]? -> Void)?,
         error: (NSError -> Void)?
@@ -117,6 +118,8 @@ public class DownloadJSONOperation: GroupOperation {
             __completion         = completion
             networkTaskOperation = nil
             downloadedJSON       = nil
+            
+            operationType = .Data
             
             super.init(operations: [])
             
@@ -131,17 +134,28 @@ public class DownloadJSONOperation: GroupOperation {
             }
             
             name = "DownloadJSONOperation<\(self.dynamicType)>"
+    }
+    
+    public override func execute() {
+        defer { super.execute() }
+        
+        guard let request = buildRequest() else {
+            return
+        }
+        
+        switch operationType {
+        case .Download:
+            networkTaskOperation = getDownloadTaskOperationWithRequest(request)
             
-            guard let request = buildRequest() else {
-                return nil
-            }
-            
+        case .Data:
             networkTaskOperation = getDataTaskOperationWithRequest(request)
-            
-            if let op = networkTaskOperation {
-                addOperation(op)
-                addOperation(NSOperation())
-            }
+        }
+        
+        
+        if let op = networkTaskOperation {
+            addOperation(op)
+            addOperation(NSOperation())
+        }
     }
 }
 
@@ -169,6 +183,7 @@ extension DownloadJSONOperation {
     private func getDataTaskOperationWithRequest(
         request: NSURLRequest
         ) -> URLSessionTaskOperation {
+            print("Creating request: \(request.URL)")
             let task = urlSession.dataTaskWithRequest(request) {
                 data, response, error in
                 self.dataRequestFinishedWithData(
@@ -264,6 +279,7 @@ extension DownloadJSONOperation {
         var _url: NSURL?
         
         if let defaultURL = url {
+            print("Found default url: \(defaultURL)")
             _url = defaultURL
         } else {
             switch endpointType {

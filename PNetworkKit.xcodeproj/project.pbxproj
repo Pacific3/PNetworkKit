@@ -206,8 +206,8 @@
 		DFA41C411C28D3B800483D23 /* Generics */ = {
 			isa = PBXGroup;
 			children = (
-				DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */,
 				DF4F4A951C33303600865F6E /* GetJSONModelByPollingOperation.swift */,
+				DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */,
 				DFA41C441C28D44200483D23 /* DownloadJSONOperation.swift */,
 				DF91011A1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift */,
 				DFA41C461C28D4B200483D23 /* ParseJSONOperation.swift */,

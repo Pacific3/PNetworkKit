@@ -1,42 +1,67 @@
+public protocol Clonable {
+    func clone() -> Self?
+}
 
-public class DownloadJSONByPollingOperation<T: Pollable, S: PollStateProtocol>: GroupOperation {
+public class DownloadJSONByPollingOperation<T: Pollable, P: DownloadJSONOperation where P: Clonable>: GroupOperation {
     // MARK: - Private Properties
     private var hasProducedAlert = false
     private var pollToURL: NSURL?
-    private var pollState: S?
+    private var pollState: PollStateProtocol?
     private var __completion: T -> Void
     private var __error: NSError -> Void
+    private var model: T?
     
     
     // MARK: - Public Properties
-    public var initialDownloadOperation: DownloadJSONOperation? {
-        return nil
-    }
-    
-    public var pollingDownloadOperation: DownloadJSONOperation? {
-        return nil
-    }
+    public var initialDownloadOperation: DownloadJSONOperation
+    public var pollingDownloadOperation: P
     
     
     // MARK: - Public Initialisers
-    public init(completion: T -> Void, error: NSError -> Void, initialPollState: S) {
-        __completion = completion
-        __error = error
-        pollState = initialPollState
-        super.init(operations: nil)
-        
-        addSubOperations()
-        
-        name = "\(self.dynamicType)"
+    public init(
+        initialDownload: DownloadJSONOperation,
+        pollOperation: P,
+        completion: T -> Void,
+        error: NSError -> Void,
+        initialPollState: PollStateProtocol
+        ) {
+            __completion = completion
+            __error = error
+            pollState = initialPollState
+            initialDownloadOperation = initialDownload
+            pollingDownloadOperation = pollOperation
+            
+            super.init(operations: nil)
+            
+            addSubOperations()
+            
+            name = "\(self.dynamicType)"
     }
     
     
     // MARK: - Overrides
+    public override func finish(errors: [NSError]) {
+        if pollState!.hasFinished() {
+            print("finished")
+            if let _m = model {
+                __completion(_m)
+            }
+            
+            internalQueue.suspended = true
+            super.finish(errors)
+        } else {
+            internalQueue.suspended = false
+        }
+    }
+    
     public override func operationDidFinish(
         operation: NSOperation,
         withErrors errors: [NSError]
         ) {
-            if let firstError = errors.first where (operation === initialDownloadOperation || operation === pollingDownloadOperation) {
+            let initial = initialDownloadOperation
+            let polling = pollingDownloadOperation
+            
+            if let firstError = errors.first where (operation.name == initial.name || operation.name == polling.name) {
                 __error(firstError)
                 produceAlert(
                     firstError,
@@ -48,22 +73,29 @@ public class DownloadJSONByPollingOperation<T: Pollable, S: PollStateProtocol>: 
             }
             
             guard let operation = operation as? DownloadJSONOperation else {
+                print("not equal")
                 return
             }
             
-            guard let json = operation.downloadedJSON,
-                model = T.withData(json) else {
-                    return
+            print("\(operation.name): \(operation.downloadedJSON)")
+            
+            guard let json = operation.downloadedJSON else {
+                return
             }
             
-            pollState = model.state as? S
+            model = T.withData(json)
+            
+            guard let _m = model else {
+                return
+            }
+            
+            pollState = _m.state
             
             if pollState!.isPending() {
-                pollToURL = NSURL(string: model.poll_to)
+                pollToURL = NSURL(string: _m.poll_to)
                 self.addSubOperations()
             }
             else if pollState!.hasFinished() {
-                __completion(model)
                 finish(errors)
             }
     }
@@ -73,6 +105,7 @@ public class DownloadJSONByPollingOperation<T: Pollable, S: PollStateProtocol>: 
 // MARK: - Private Methods
 extension DownloadJSONByPollingOperation {
     private func addSubOperations() {
+        internalQueue.maxConcurrentOperationCount = 1
         guard let pollState = pollState else {
             return
         }
@@ -84,9 +117,16 @@ extension DownloadJSONByPollingOperation {
         if !pollState.hasStarted() {
             _do = initialDownloadOperation
         }
-        else if pollState.hasStarted() && pollState.isPending() {
-            _do = pollingDownloadOperation
+        else if pollState.isPending() {
+            
+            guard let clone = pollingDownloadOperation.clone() else {
+                return
+            }
+            _do = clone
             _do?.url = pollToURL
+            print("internalqueue suspended: \(internalQueue.suspended)")
+            print("operation finished: \(_do?.finished)")
+            print("new poll url: \(_do?.url)")
         }
         
         guard let op = _do else {
