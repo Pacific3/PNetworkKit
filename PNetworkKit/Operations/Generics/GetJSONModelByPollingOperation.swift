@@ -29,7 +29,7 @@ public class GetJSONModelByPollingOperation<T: Object where T: Pollable>: GroupO
     }
     
     public var pollURL: NSURL?
-    public var pollState: PollStateProtocol?
+    public var pollState: PollStatusProtocol?
     public var completion: (Void -> Void)?
     
     public var cacheFile: NSURL {
