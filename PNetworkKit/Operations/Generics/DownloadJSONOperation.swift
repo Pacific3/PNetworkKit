@@ -4,8 +4,9 @@ private let urlSession = NSURLSession(
 )
 
 public enum HTTPMethod: String {
-    case GET  = "GET"
-    case POST = "POST"
+    case GET   = "GET"
+    case POST  = "POST"
+    case PATCH = "PATCH"
 }
 
 public class DownloadJSONOperation: GroupOperation {
@@ -30,7 +31,7 @@ public class DownloadJSONOperation: GroupOperation {
     private var simpleEndpointURL: NSURL {
         return simpleEndpoint.URL()
     }
-
+    
     
     // MARK: -  Public Support Types 
     public enum DownloadConfiguration {
