@@ -108,7 +108,7 @@ public class DownloadJSONOperation: GroupOperation {
             name = "DownloadJSONOperation<\(self.dynamicType)>"
     }
     
-    public required init?(
+    public init?(
         url: NSURL? = nil,
         completion: ([String:AnyObject]? -> Void)?,
         error: (NSError -> Void)?
@@ -231,10 +231,19 @@ extension DownloadJSONOperation {
                 return
             }
             
+            guard let jsonString = NSString(data: data, encoding: NSUTF8StringEncoding) else {
+                finish()
+                return
+            }
+            
+            let s = "{\"result\":\(jsonString)}"
+            
+            let newJsonData = (s as NSString).dataUsingEncoding(NSUTF8StringEncoding)!
+            
             do {
                 let json = try NSJSONSerialization.JSONObjectWithData(
-                    data,
-                    options: .MutableContainers
+                    newJsonData,
+                    options: NSJSONReadingOptions.AllowFragments
                     ) as? [String:AnyObject]
                 __completion?(json)
                 self.downloadedJSON = json
