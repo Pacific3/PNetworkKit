@@ -62,12 +62,12 @@ public class DownloadJSONByPollingOperation<T: Pollable, P: DownloadJSONOperatio
             let polling = pollingDownloadOperation
             
             if let firstError = errors.first where (operation.name == initial.name || operation.name == polling.name) {
-                __error?(firstError)
                 produceAlert(
                     firstError,
                     hasProducedAlert: &hasProducedAlert) { generatedOperation in
                         self.produceOperation(generatedOperation)
                 }
+                finish([firstError])
                 
                 return
             }
@@ -79,6 +79,7 @@ public class DownloadJSONByPollingOperation<T: Pollable, P: DownloadJSONOperatio
                     else {
                         return
                 }
+                
                 
                 model = T.withData(result)
                 
