@@ -3,7 +3,7 @@ private var URLSessionTaskOperationContext = 0
 
 public class URLSessionTaskOperation: Operation {
     
-    let task: NSURLSessionTask
+    public let task: NSURLSessionTask
     
     private var observerRemoved = false
     private var stateLock = NSLock()
