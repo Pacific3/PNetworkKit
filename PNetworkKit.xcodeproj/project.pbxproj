@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		DF0CAA3C1C2F59A900397E78 /* PUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA381C2F59A900397E78 /* PUIKit.framework */; };
 		DF0CAA3D1C2F59A900397E78 /* PFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA391C2F59A900397E78 /* PFoundation.framework */; };
-		DF0CAA3E1C2F59A900397E78 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA3A1C2F59A900397E78 /* RealmSwift.framework */; };
-		DF0CAA3F1C2F59A900397E78 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF0CAA3B1C2F59A900397E78 /* Realm.framework */; };
 		DF17EF481C3EDE63004071D9 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF17EF471C3EDE63004071D9 /* UIImageView.swift */; };
 		DF2A54C01C2B6BA80064F889 /* GeocodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A54BE1C2B6BA80064F889 /* GeocodeOperation.swift */; };
 		DF2A54C11C2B6BA80064F889 /* ReverseGeocodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A54BF1C2B6BA80064F889 /* ReverseGeocodeOperation.swift */; };
@@ -18,7 +16,6 @@
 		DF49F8F51C29F9D600D3605D /* UserNotificationCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F41C29F9D600D3605D /* UserNotificationCondition.swift */; };
 		DF49F8F81C29FB4500D3605D /* UIUserNotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F71C29FB4500D3605D /* UIUserNotificationSettings.swift */; };
 		DF49F8FA1C2A013600D3605D /* RemoteNotificationCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49F8F91C2A013600D3605D /* RemoteNotificationCondition.swift */; };
-		DF4F4A961C33303600865F6E /* GetJSONModelByPollingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4F4A951C33303600865F6E /* GetJSONModelByPollingOperation.swift */; };
 		DF4F4A991C3330C200865F6E /* ProduceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4F4A981C3330C200865F6E /* ProduceAlert.swift */; };
 		DF91011B1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF91011A1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift */; };
 		DFA41C131C28CB4900483D23 /* PNetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DFA41C121C28CB4900483D23 /* PNetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,9 +27,7 @@
 		DFA41C3C1C28CFB500483D23 /* JSONParselable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C3B1C28CFB500483D23 /* JSONParselable.swift */; };
 		DFA41C3E1C28CFDB00483D23 /* Pollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C3D1C28CFDB00483D23 /* Pollable.swift */; };
 		DFA41C401C28D2A300483D23 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C3F1C28D2A300483D23 /* Endpoint.swift */; };
-		DFA41C431C28D3CC00483D23 /* GetJSONModelOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */; };
 		DFA41C451C28D44200483D23 /* DownloadJSONOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C441C28D44200483D23 /* DownloadJSONOperation.swift */; };
-		DFA41C471C28D4B200483D23 /* ParseJSONOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C461C28D4B200483D23 /* ParseJSONOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +43,6 @@
 /* Begin PBXFileReference section */
 		DF0CAA381C2F59A900397E78 /* PUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PUIKit.framework; path = Carthage/Build/iOS/PUIKit.framework; sourceTree = "<group>"; };
 		DF0CAA391C2F59A900397E78 /* PFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PFoundation.framework; path = Carthage/Build/iOS/PFoundation.framework; sourceTree = "<group>"; };
-		DF0CAA3A1C2F59A900397E78 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
-		DF0CAA3B1C2F59A900397E78 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		DF17EF471C3EDE63004071D9 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		DF2A54BE1C2B6BA80064F889 /* GeocodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeocodeOperation.swift; sourceTree = "<group>"; };
 		DF2A54BF1C2B6BA80064F889 /* ReverseGeocodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReverseGeocodeOperation.swift; sourceTree = "<group>"; };
@@ -57,7 +50,6 @@
 		DF49F8F41C29F9D600D3605D /* UserNotificationCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationCondition.swift; sourceTree = "<group>"; };
 		DF49F8F71C29FB4500D3605D /* UIUserNotificationSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUserNotificationSettings.swift; sourceTree = "<group>"; };
 		DF49F8F91C2A013600D3605D /* RemoteNotificationCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteNotificationCondition.swift; sourceTree = "<group>"; };
-		DF4F4A951C33303600865F6E /* GetJSONModelByPollingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetJSONModelByPollingOperation.swift; sourceTree = "<group>"; };
 		DF4F4A981C3330C200865F6E /* ProduceAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProduceAlert.swift; sourceTree = "<group>"; };
 		DF91011A1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadJSONByPollingOperation.swift; sourceTree = "<group>"; };
 		DFA41C0F1C28CB4900483D23 /* PNetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PNetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,9 +64,7 @@
 		DFA41C3B1C28CFB500483D23 /* JSONParselable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParselable.swift; sourceTree = "<group>"; };
 		DFA41C3D1C28CFDB00483D23 /* Pollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pollable.swift; sourceTree = "<group>"; };
 		DFA41C3F1C28D2A300483D23 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetJSONModelOperation.swift; sourceTree = "<group>"; };
 		DFA41C441C28D44200483D23 /* DownloadJSONOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadJSONOperation.swift; sourceTree = "<group>"; };
-		DFA41C461C28D4B200483D23 /* ParseJSONOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseJSONOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +74,6 @@
 			files = (
 				DF0CAA3C1C2F59A900397E78 /* PUIKit.framework in Frameworks */,
 				DF0CAA3D1C2F59A900397E78 /* PFoundation.framework in Frameworks */,
-				DF0CAA3E1C2F59A900397E78 /* RealmSwift.framework in Frameworks */,
-				DF0CAA3F1C2F59A900397E78 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,8 +93,6 @@
 			children = (
 				DF0CAA381C2F59A900397E78 /* PUIKit.framework */,
 				DF0CAA391C2F59A900397E78 /* PFoundation.framework */,
-				DF0CAA3A1C2F59A900397E78 /* RealmSwift.framework */,
-				DF0CAA3B1C2F59A900397E78 /* Realm.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -206,11 +192,8 @@
 		DFA41C411C28D3B800483D23 /* Generics */ = {
 			isa = PBXGroup;
 			children = (
-				DF4F4A951C33303600865F6E /* GetJSONModelByPollingOperation.swift */,
-				DFA41C421C28D3CC00483D23 /* GetJSONModelOperation.swift */,
 				DFA41C441C28D44200483D23 /* DownloadJSONOperation.swift */,
 				DF91011A1C4F091A0066FF96 /* DownloadJSONByPollingOperation.swift */,
-				DFA41C461C28D4B200483D23 /* ParseJSONOperation.swift */,
 			);
 			path = Generics;
 			sourceTree = "<group>";
@@ -324,19 +307,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF2A54C11C2B6BA80064F889 /* ReverseGeocodeOperation.swift in Sources */,
-				DFA41C431C28D3CC00483D23 /* GetJSONModelOperation.swift in Sources */,
 				DF4F4A991C3330C200865F6E /* ProduceAlert.swift in Sources */,
 				DF49F8FA1C2A013600D3605D /* RemoteNotificationCondition.swift in Sources */,
 				DFA41C3C1C28CFB500483D23 /* JSONParselable.swift in Sources */,
 				DFA41C361C28CF2B00483D23 /* ReachabilityCondition.swift in Sources */,
 				DF49F8F31C29F88300D3605D /* GetCurrentLocationOperation.swift in Sources */,
-				DFA41C471C28D4B200483D23 /* ParseJSONOperation.swift in Sources */,
 				DF2A54C01C2B6BA80064F889 /* GeocodeOperation.swift in Sources */,
 				DFA41C3E1C28CFDB00483D23 /* Pollable.swift in Sources */,
 				DF17EF481C3EDE63004071D9 /* UIImageView.swift in Sources */,
 				DFA41C331C28CE8500483D23 /* URLSessionTaskOperation.swift in Sources */,
 				DFA41C401C28D2A300483D23 /* Endpoint.swift in Sources */,
-				DF4F4A961C33303600865F6E /* GetJSONModelByPollingOperation.swift in Sources */,
 				DF49F8F81C29FB4500D3605D /* UIUserNotificationSettings.swift in Sources */,
 				DFA41C451C28D44200483D23 /* DownloadJSONOperation.swift in Sources */,
 				DFA41C391C28CF6A00483D23 /* LocationCondition.swift in Sources */,

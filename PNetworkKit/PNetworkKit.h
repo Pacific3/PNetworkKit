@@ -8,8 +8,6 @@
 
 #import <PFoundation/PFoundation.h>
 #import <PUIKit/PUIKit.h>
-#import <Realm/Realm.h>
-#import <RealmSwift/RealmSwift-Swift.h>
 #import <CoreLocation/CoreLocation.h>
 
 //! Project version number for PNetworkKit.
