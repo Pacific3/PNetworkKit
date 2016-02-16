@@ -1,15 +1,9 @@
-public protocol Clonable {
-    func clone() -> Self?
-}
 
 public class DownloadJSONByPollingOperation<T: Pollable, P: DownloadJSONOperation where P: Clonable>: GroupOperation {
     // MARK: - Private Properties
     private var hasProducedAlert = false
     private var pollToURL: NSURL?
     private var pollState: PollStatusProtocol
-    public var __completion: (T -> Void)?
-    // WARNING: __completion and _error are ugly
-    public var __error: (NSError -> Void)?
     private var model: T?
     
     
@@ -17,6 +11,8 @@ public class DownloadJSONByPollingOperation<T: Pollable, P: DownloadJSONOperatio
     public var initialDownloadOperation: DownloadJSONOperation
     public var pollingDownloadOperation: P
     public var parsedJSON: T?
+    public var completionHandler: (T -> Void)?
+    public var errorHandler: (NSError -> Void)?
     
     // MARK: - Public Initialisers
     public init(
@@ -26,8 +22,8 @@ public class DownloadJSONByPollingOperation<T: Pollable, P: DownloadJSONOperatio
         error: (NSError -> Void)? = nil,
         initialPollState: PollStatusProtocol
         ) {
-            __completion = completion
-            __error = error
+            completionHandler = completion
+            errorHandler = error
             pollState = initialPollState
             initialDownloadOperation = initialDownload
             pollingDownloadOperation = pollOperation
@@ -46,7 +42,7 @@ public class DownloadJSONByPollingOperation<T: Pollable, P: DownloadJSONOperatio
         if pollState.hasFinished() {
             if let _m = model {
                 parsedJSON = _m
-                __completion?(_m)
+                completionHandler?(_m)
             }
             super.finish(errors)
         } else {
