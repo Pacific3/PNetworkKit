@@ -1,4 +1,6 @@
 
+public let kPNKDidFinishSettingImageFromURLToImageView = "kPNKDidFinishSettingImageFromURLToImageView"
+
 private func imageCacheKeyFromURLRequest(request: NSURLRequest) -> String {
     return request.URL!.absoluteString
 }
@@ -47,6 +49,7 @@ public extension UIImageView {
         if let cachedImage = ImageView.p_sharedImageCache.cachedImageForRequest(request) {
             image = cachedImage
             imageRequestOperation = nil
+            postNotification()
         } else {
             if let placeholder = placeholder {
                 image = placeholder
@@ -66,12 +69,17 @@ public extension UIImageView {
                     }
                     
                     UIView.transitionWithView(strongSelf,
-                        duration: 0.5,
+                        duration: 0.3,
                         options: UIViewAnimationOptions.TransitionCrossDissolve,
                         animations: {
                             strongSelf.image = serializedImage
                         },
-                        completion: nil)
+                        completion: { finished in
+                            if finished {
+                                strongSelf.postNotification()
+                            }
+                        }
+                    )
                     
                     UIImageView.p_sharedImageCache.cacheImage(serializedImage, forRequest: request)
                 }
@@ -101,6 +109,16 @@ public extension UIImageView {
         request.cachePolicy = .ReturnCacheDataElseLoad
         
         p_setImageWithRequest(request, placeHolderImage: placeholder)
+    }
+    
+    private func postNotification() {
+        executeOnMainThread {
+            NSNotificationCenter.defaultCenter().postNotificationName(
+                kPNKDidFinishSettingImageFromURLToImageView, 
+                object: self,
+                userInfo: nil
+            )
+        }
     }
 }
 
