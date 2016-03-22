@@ -73,7 +73,14 @@ private class RemoteNotificationPermissionRequestOperation: Operation {
         executeOnMainThread {
             let notificationCenter = NSNotificationCenter.defaultCenter()
             
-            notificationCenter.addObserver(self, selector: "didReceiveResponse:", name: RemoteNotificationName, object: nil)
+            notificationCenter.addObserver(
+                self,
+                selector: #selector(
+                    RemoteNotificationPermissionRequestOperation.didReceiveResponse(_:)
+                ),
+                name: RemoteNotificationName,
+                object: nil
+            )
             
             self.application.registerForRemoteNotifications()
         }
