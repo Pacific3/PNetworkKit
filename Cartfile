@@ -1,2 +1,2 @@
-github "Pacific3/PFoundation" ~> 1.3
-github "Pacific3/PUIKit" ~> 1.5
+github "Pacific3/PFoundation" "master"
+github "Pacific3/PUIKit" "master"

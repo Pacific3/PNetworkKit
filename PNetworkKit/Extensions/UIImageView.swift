@@ -2,7 +2,7 @@
 public let kPNKDidFinishSettingImageFromURLToImageView = "kPNKDidFinishSettingImageFromURLToImageView"
 
 private func imageCacheKeyFromURLRequest(request: NSURLRequest) -> String {
-    return request.URL!.absoluteString
+    return request.URL!.absoluteString!
 }
 
 public protocol ImageCaching {
